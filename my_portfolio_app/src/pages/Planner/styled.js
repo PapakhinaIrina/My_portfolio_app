@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { Box, Container } from '@mui/material'
-import { headerHeight } from "../../shared/utils/constants"
+import { headerHeight } from "../../shared/constants"
 
 export const StyledCalendarWrapper = styled(Container) ({
   padding: "0"

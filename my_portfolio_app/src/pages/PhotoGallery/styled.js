@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material";
 import { styled } from "styled-components";
-import { headerHeight } from "../../shared/utils/constants";
+import { headerHeight } from "../../shared/constants";
 
 export const PhotogalleryContainer = styled(Container) ({
   maxWidth: '100vh',

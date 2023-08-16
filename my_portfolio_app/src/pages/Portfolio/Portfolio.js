@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Box } from "@mui/material"
 import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
-import { headerHeight } from "../../shared/utils/constants/componentSize"
-import { spacing } from "../../shared/utils/constants/spacing"
+import { headerHeight } from "../../shared/constants/componentSize"
+import { spacing } from "../../shared/constants/spacing"
 
 const Portfolio = () => {
   return (

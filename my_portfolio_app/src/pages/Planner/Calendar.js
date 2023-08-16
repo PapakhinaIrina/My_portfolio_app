@@ -10,7 +10,7 @@ import { StyledCalendarContainer,
         CalendarDayHeader, 
         } from "./styled"
 import { isCurrentMonth, isCurrentDay } from "../../shared/utils/helpers"
-import { url } from "../../shared/utils/constants/url"
+import { url } from "../../shared/constants/url"
 import { v4 as uuidv4 } from "uuid"
 
 const totalDays = 42;

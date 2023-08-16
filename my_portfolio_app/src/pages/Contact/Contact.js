@@ -2,10 +2,10 @@ import React from "react"
 import { Container, Typography, Box } from "@mui/material"
 import { Icon } from "@iconify/react"
 import { Animation } from "../../widgets/ui/animation/Animation"
-import { CONSTANTS } from "../../shared/utils/constants"
+import { CONSTANTS } from "../../shared/constants/constants"
 import { ButtonHome } from "../../widgets/buttonHome/ButtonHome"
-import { headerHeight } from "../../shared/utils/constants"
-import { spacing } from "../../shared/utils/constants"
+import { headerHeight } from "../../shared/constants/componentSize"
+import { spacing } from "../../shared/constants/spacing"
 
 const textConnection = "Связь";
 const socialNetwork = "Социальные сети";

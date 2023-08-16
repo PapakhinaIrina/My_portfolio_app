@@ -1,6 +1,6 @@
 import { Container, Typography } from "@mui/material"
-import { headerHeight } from "../../shared/utils/constants/componentSize"
-import { spacing } from "../../shared/utils/constants/spacing"
+import { headerHeight } from "../../shared/constants/componentSize"
+import { spacing } from "../../shared/constants/spacing"
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown"
 
 const Landing = () => {

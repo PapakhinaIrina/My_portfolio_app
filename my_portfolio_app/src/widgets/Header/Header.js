@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Container, Box, Button, Toolbar, Typography } from "@mui/material";
-import { headerHeight } from "../../shared/utils/constants/componentSize";
+import { headerHeight } from "../../shared/constants/componentSize";
 
 const textHeader = "Papakhina's Portfolio"
 export const Header = () => {

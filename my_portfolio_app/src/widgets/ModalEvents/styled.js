@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { Input  } from '@mui/material'
-import { spacing } from "../../shared/utils/constants"
+import { spacing } from "../../shared/constants"
 
 export const StyledInputModalEvent = styled(Input) ({
   backgroundColor: "rgb(251, 249, 246)",

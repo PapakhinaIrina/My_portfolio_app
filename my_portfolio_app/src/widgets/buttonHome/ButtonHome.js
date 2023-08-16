@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react"
 import { Container, Link } from "@mui/material"
-import { headerHeight } from "../../shared/utils/constants/componentSize"
-import { spacing } from "../../shared/utils/constants/spacing"
+import { headerHeight } from "../../shared/constants/componentSize"
+import { spacing } from "../../shared/constants/spacing"
 
 
 export const ButtonHome = () => {

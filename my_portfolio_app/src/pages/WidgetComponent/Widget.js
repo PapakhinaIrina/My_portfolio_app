@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { Container, Box, Paper, Button } from "@mui/material"
 import { Icon } from "@iconify/react"
-import { headerHeight } from "../../shared/utils/constants/componentSize"
-import { spacing } from "../../shared/utils/constants/spacing"
+import { headerHeight } from "../../shared/constants/componentSize"
+import { spacing } from "../../shared/constants/spacing"
 
 
 import './style.css';

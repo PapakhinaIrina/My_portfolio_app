@@ -9,7 +9,7 @@ import { DayShowComponentContainer,
           DayShowComponentScaleItemText
         } from "./styled"
 import FormModalEvent from "../../widgets/ModalEvents/ModalEvents"
-import { ITEMS_PER_DAY } from "../../shared/utils/constants/constants"
+import { ITEMS_PER_DAY } from "../../shared/constants/constants"
 import { Tooltip, Box} from '@mui/material'
 import { Icon } from "@iconify/react"
 import Lottie from "lottie-react"

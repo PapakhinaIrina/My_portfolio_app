@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { Box, Container, Button } from '@mui/material'
-import { spacing } from "../../shared/utils/constants/spacing"
+import { spacing } from "../../shared/constants/spacing"
 
 
 export const DayShowComponentContainer = styled(Container)({
