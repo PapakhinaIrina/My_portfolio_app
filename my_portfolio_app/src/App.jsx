@@ -1,5 +1,5 @@
 import React from "react"
-import { Layout } from "../src/app/Layout"
+import { Layout } from "./app/Layout"
 import { RouterProvider } from "./app/providers"
 import { Router } from "./pages/index" 
 
