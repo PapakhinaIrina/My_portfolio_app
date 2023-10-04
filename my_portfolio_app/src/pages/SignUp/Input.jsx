@@ -6,7 +6,7 @@ import { InputError } from "../../shared/ui/InputError"
 
 
 
-export const InputForm = ({ label, type, id, placeholder, name, validation }) => {
+export const InputForm = ({  validation, type, id, placeholder, label }) => {
   const {
     register,
     formState: { errors },
@@ -14,9 +14,6 @@ export const InputForm = ({ label, type, id, placeholder, name, validation }) =>
 
   const inputError = findInputError(errors, label)
   const isInvalid = isFormInvalid(inputError)
-
-  console.log('inputError' , inputError);
-  console.log('isInvalid' , isInvalid);
 
   return (
     <FormControl 
@@ -27,6 +24,7 @@ export const InputForm = ({ label, type, id, placeholder, name, validation }) =>
           <InputError/>
           )}
       <Input
+        autoComplete="off"
         disableUnderline={true}
         sx={{
           // color: "rgba(95, 65, 32, 0.376)",
@@ -47,7 +45,7 @@ export const InputForm = ({ label, type, id, placeholder, name, validation }) =>
           id={id}
           type={type}
           placeholder={placeholder}
-          {...register(name, validation)}
+          {...register(label, validation)}
       />
     </FormControl>
   )

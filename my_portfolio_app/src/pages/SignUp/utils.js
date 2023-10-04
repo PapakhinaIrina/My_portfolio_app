@@ -3,14 +3,16 @@ export const findInputError = (errors, name) => {
   const filteredErrors = Object.keys(errors)
     .filter(key => key.includes(name))
     .reduce((acc, key) => {
-      return Object.assign(acc, { [key]: errors[key] })
+      return Object.assign(acc, {error: errors[key]})
     }, {})
-    console.log('filteredErrors===>', filteredErrors);
   return filteredErrors
 }
 
 export const isFormInvalid = (err) => {
-  if (Object.keys(err).length > 0) return true
+  console.log('err', err);
+  if (Object.keys(err).length > 0) {
+    return true
+  }
     return false
 }
 
@@ -37,7 +39,7 @@ export const password_validation = {
   label: 'password',
   type: 'password',
   id: 'password',
-  placeholder: 'password ...',
+  placeholder: 'password',
   validation: {
     required: {
       value: true,

@@ -1,11 +1,11 @@
 import React from "react"
 import { Button } from "@mui/material"
 
-export const SignUpButton = () => {
-  return(
-    <Button  
-      variant="contained"
+export const SignUpButton = ({ onClick }) => (
+    <Button 
+      onClick={onClick}
       type="submit"
+      variant="contained"
       sx={{
         cursor: "pointer",
         width: "100%",
@@ -23,5 +23,4 @@ export const SignUpButton = () => {
       }}>
       Присоединяйся
     </Button>
-  )
-}
+)

@@ -3,7 +3,8 @@ import { Box } from "@mui/material"
 import Lottie from "lottie-react"
 import AnimationError from "../../../shared/ui/animation/animationError.json"
 
-export const InputError = (message) =>  { 
+export const InputError = (message) =>  {
+
   return (
   <Box 
     sx={{

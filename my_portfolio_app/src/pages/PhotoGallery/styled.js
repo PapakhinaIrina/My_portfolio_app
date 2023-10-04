@@ -6,7 +6,6 @@ export const PhotogalleryContainer = styled(Container) ({
   maxWidth: '100vh',
   height: `calc(100vh - ${headerHeight}px)`,
   justifyContent: 'center',
-
 })
 
 export const PhotogalleryWrapper = styled(Box) ({
