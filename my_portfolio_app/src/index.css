@@ -1,6 +1,7 @@
 #root { 
   font-weight: 400;
   min-height: 100vh;
+  min-width: 100vw;
   color-scheme: light dark;
   background-color: #e8e6e2;
 
@@ -25,7 +26,6 @@ body {
   padding: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
 }
 
