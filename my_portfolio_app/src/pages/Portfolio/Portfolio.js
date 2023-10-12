@@ -4,8 +4,11 @@ import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
 import { headerHeight } from "../../shared/constants/componentSize"
 import { spacing } from "../../shared/constants/spacing"
+import { useTranslation } from 'react-i18next'
 
 const Portfolio = () => {
+  const { t } = useTranslation();
+
   return (
     <Container
       sx={{
@@ -37,25 +40,25 @@ const Portfolio = () => {
           sx={{
           }}>
           <Link to="/portfolio/signup">
-            SIGN UP
+            {t("sign_up").toUpperCase()}
           </Link>
         </Box>
 
         <Box>
           <Link to="/portfolio/widget">
-            WIDGET
+            {t("widget").toUpperCase()}
           </Link>
         </Box>
 
         <Box>
           <Link to="/portfolio/planner">
-            PLANNER
+          {t("planner").toUpperCase()}
           </Link>
         </Box>
 
         <Box>
           <Link to="/portfolio/photo_gallery">
-            PHOTO GALLERY
+          {t("photogallery").toUpperCase()}
           </Link>
         </Box>
 

@@ -6,11 +6,11 @@ import { CONSTANTS } from "../../shared/constants/constants"
 import { ButtonHome } from "../../widgets/buttonHome/ButtonHome"
 import { headerHeight } from "../../shared/constants/componentSize"
 import { spacing } from "../../shared/constants/spacing"
-
-const textConnection = "Связь";
-const socialNetwork = "Социальные сети";
+import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
+const { t } = useTranslation();
+
   return (
     <Container
       sx={{
@@ -43,7 +43,7 @@ const Contact = () => {
             fontFamily="Dosis"
             fontWeight="bold"
           > 
-            { textConnection }
+            {t("communication")}
           </Typography>
         </Box>
 
@@ -93,7 +93,7 @@ const Contact = () => {
             fontWeight="bold"
             variant="h5"
             >
-            { socialNetwork }
+            {t("social_media")}
           </Typography>
         </Box>
 

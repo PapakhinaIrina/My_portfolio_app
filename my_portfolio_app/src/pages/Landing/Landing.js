@@ -5,11 +5,11 @@ import { spacing } from "../../shared/constants/spacing"
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown"
 import Lottie from "lottie-react"
 import Animation from "../../shared/ui/animation/animationLandingPage.json"
-
-
+import { useTranslation } from 'react-i18next'
 
 const Landing = () => {
   const {isMobile, isTablet, isDesktop} = useMatchMedia();
+  const { t } = useTranslation();
 
   return (
   <Container>
@@ -31,7 +31,7 @@ const Landing = () => {
           sx={{
             fontWeight: 'bold',          
           }}>
-            It's a landing page
+            {t("landing_title")}
         </Typography>
           <KeyboardDoubleArrowDownIcon 
           sx={{

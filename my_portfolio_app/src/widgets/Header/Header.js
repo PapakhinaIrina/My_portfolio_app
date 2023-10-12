@@ -2,11 +2,14 @@ import React from "react";
 import { AppBar, Container, Box, Button, Toolbar, Typography } from "@mui/material"
 import { useMatchMedia } from "../../shared/utils/hooks/matchMediaHook"
 import { headerHeight } from "../../shared/constants/componentSize"
+import { LanguageButton } from "../LanguageButton/index"
+import { useTranslation } from 'react-i18next';
+
 
 const textHeader = "Papakhina's Portfolio"
 export const Header = () => {
   const {isMobile, isTablet, isDesktop} = useMatchMedia();
-
+  const { t } = useTranslation();
   return (
     <AppBar
     position="static"
@@ -50,7 +53,7 @@ export const Header = () => {
                   color: "black",
                   fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
                 }}>
-                  About
+                  {t("about")}
               </Button>
               <Button
                 variant="text"
@@ -60,7 +63,7 @@ export const Header = () => {
                   fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
 
                 }}>
-                  Contact
+                  {t("contact")}
               </Button>
               <Button
                 variant="text"
@@ -69,8 +72,15 @@ export const Header = () => {
                   color: "black",
                   fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
                 }}>
-                  Portfolio
+                  {t("portfolio")}
               </Button>
+              <Box
+                sx={{
+                  position: 'relative',
+                  right: '0vh'
+                }}>
+                <LanguageButton />
+              </Box>
           </Box>
         </Toolbar>
       </Container>
