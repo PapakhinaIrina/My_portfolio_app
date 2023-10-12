@@ -14,13 +14,19 @@ const PhotoGallery = () => {
         gridTemplateRows: '100px 60px 800px'
       }}>
       <PhotoGalleryHeader />
-        <UploadPhotoInput />
+        {/* <UploadPhotoInput />
       <PhotogalleryWrapper>
         <PhotoGalleryGrid>
-          {/* <div>Here must to be photos
-          </div> */}
+
         </PhotoGalleryGrid>
-      </PhotogalleryWrapper>
+      </PhotogalleryWrapper> */}
+      <div style={{
+        fontSize: '20px',
+        fontWeight: 'bold',
+        textAlign: 'center'
+      }}>
+        В разработке...
+      </div>
     </PhotogalleryContainer>
   )
 }
