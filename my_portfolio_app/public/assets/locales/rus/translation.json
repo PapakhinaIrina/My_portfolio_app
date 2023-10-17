@@ -8,5 +8,10 @@
   "planner": "Планировщик",
   "photogallery": "Фотогалерея",
   "communication": "Связь",
-  "social_media": "Социальные сети"
+  "social_media": "Социальные сети",
+  "user_name": "Ваше имя",
+  "create_account": "Создать учетную запись",
+  "join": "Присоединяйся",
+  "has_account": "Вы уже имеете аккаунт?",
+  "login_in_here": "Войти в свой аккаунт"
 }

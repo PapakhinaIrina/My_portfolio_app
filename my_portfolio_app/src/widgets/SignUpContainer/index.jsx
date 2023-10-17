@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from 'react-i18next'
 import { Container, Box, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
@@ -8,6 +9,7 @@ import { spacing } from "../../shared/constants/spacing"
 
 
 export const SignUpContainer = ({ children }) => {
+  const { t } = useTranslation();
 
   return(
     <Container disableGutters 
@@ -38,9 +40,10 @@ export const SignUpContainer = ({ children }) => {
           width: "400px",
           padding: "40px 30px 32px",
           borderRadius: "8px",
-          backgroundColor: "rgb(255, 184, 61)",
+          backgroundColor: "#f9f5f0",
           textAlign: "center",
-          transition: "0.4s"
+          transition: "0.4s",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"
         }}>
         <img src={image} alt=""width="190px" padding="5px"/>
         <Typography
@@ -51,7 +54,7 @@ export const SignUpContainer = ({ children }) => {
           fontWeight: "600",
           margin: "0 0  30px"
         }}>
-          Регистрация
+          { t("create_account") }
         </Typography>
           { children }
       </Box>

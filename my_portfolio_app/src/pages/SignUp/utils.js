@@ -1,5 +1,4 @@
 export const findInputError = (errors, name) => {
-
   const filteredErrors = Object.keys(errors)
     .filter(key => key.includes(name))
     .reduce((acc, key) => {
@@ -16,12 +15,11 @@ export const isFormInvalid = (err) => {
     return false
 }
 
-export const name_validation = {
-  name: 'name',
-  label: 'name',
+export const user_name_validation = {
+  name: 'username',
+  label: 'Username',
   type: 'text',
-  id: 'name',
-  placeholder: 'name ...',
+  id: 'username',
   validation: {
     required: {
       value: true,
@@ -34,20 +32,20 @@ export const name_validation = {
   },
 }
 
-export const password_validation = {
-  name: 'password',
-  label: 'password',
-  type: 'password',
-  id: 'password',
-  placeholder: 'password',
+export const login_name_validation  = {
+  name: 'email',
+  label: 'Email',
+  type: 'text',
+  id: 'email',
   validation: {
     required: {
       value: true,
       message: 'required',
     },
-    minLength: {
-      value: 6,
-      message: 'min 6 characters',
+    maxLength: {
+      value: 90,
+      message: '30 characters max',
     },
   },
 }
+

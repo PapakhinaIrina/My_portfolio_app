@@ -8,5 +8,10 @@
   "planner": "Planner",
   "photogallery": "Photogallery",
   "communication": "Communication",
-  "social_media": "Social media"
+  "social_media": "Social media",
+  "user_name": "Your name",
+  "create_account": "Create your account",
+  "join": "Join",
+  "has_account": "Already have an account?",
+  "login_in_here": "Log in here"
 }

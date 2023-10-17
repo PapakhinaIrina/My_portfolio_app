@@ -8,5 +8,11 @@
   "planner": "Planificateur",
   "photogallery": "Galerie photos",
   "communication": "Communication",
-  "social_media": "Médias sociaux"
+  "social_media": "Médias sociaux",
+  "user_name": "Votre nom",
+  "create_account": "Créer votre compte",
+  "join": "Rejoignez",
+  "has_account": "Avez déjà un compte?",
+  "login_in_here": "Connectez-vous ici"
+
 }
