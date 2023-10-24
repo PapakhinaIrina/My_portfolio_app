@@ -8,16 +8,17 @@ import { useTranslation } from 'react-i18next';
 
 const textHeader = "Papakhina's Portfolio"
 export const Header = () => {
-  const {isMobile, isTablet, isDesktop} = useMatchMedia();
+  const { isDesktop } = useMatchMedia();
   const { t } = useTranslation();
   return (
     <AppBar
     position="static"
     color="transparent"
     sx={{
-      height: headerHeight,
-      minWidth: isMobile ? '390px' : null || isTablet ? '767px' : null || isDesktop ? '1820px' : null,
-      maxWidth: isMobile ? '766px' : null || isTablet ? '1199px' : null || isDesktop ? '3000px' : null,
+      height: isDesktop ? headerHeight : '40px',
+      maxWidth: '100vw',
+      minWidth: '100%',
+      justifyContent: 'center'
     }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters
@@ -34,7 +35,7 @@ export const Header = () => {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
-              fontWeight: isMobile ? 200 : null || isTablet ? 500 : null || isDesktop ?  700 : null,
+              fontWeight: isDesktop ? '300px' : '180px',              
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
@@ -44,14 +45,14 @@ export const Header = () => {
           <Box 
             sx={{
               display: "flex",
-              gap: 2
+              gap: 2,
             }}>
               <Button
                 variant="text"
                 href="/about"
                 sx={{
                   color: "black",
-                  fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
+                  fontSize: isDesktop ? 20 : 8,
                 }}>
                   {t("about")}
               </Button>
@@ -60,8 +61,7 @@ export const Header = () => {
                 href="/contact"
                 sx={{
                   color: "black",
-                  fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
-
+                  fontSize: isDesktop ? 20 : 8,
                 }}>
                   {t("contact")}
               </Button>
@@ -70,8 +70,8 @@ export const Header = () => {
                 href="/portfolio"
                 sx={{
                   color: "black",
-                  fontSize: isMobile ? 10 : null || isTablet ? 20 : null || isDesktop ?  70 : null,
-                }}>
+                  fontSize: isDesktop ? 20 : 8,                
+                  }}>
                   {t("portfolio")}
               </Button>
               <Box
