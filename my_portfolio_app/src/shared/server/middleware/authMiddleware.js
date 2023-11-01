@@ -7,15 +7,16 @@ module.exports = function (req, res, next) {
     next()
   }
   try {
-    const token = req.headers.authorization.split(" ")[1]
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader?.split(' ')[1]
     if(!token) {
-      return res.status(403).json({message: 'User is not authorized'})
+      return res.sendStatus(401).json({message: 'User is not authorized'})
     }
     const decodeData = jwt.verify(token, secret)
     req.user = decodeData
     next()
   } catch (error) {
     console.log(error)
-    return res.status(403).json({message: 'User is not authorized'})  
+    return res.sendStatus(403).json({message: 'User is not authorized'})  
   }
 };

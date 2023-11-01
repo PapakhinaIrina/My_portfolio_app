@@ -4,13 +4,14 @@ import { Button } from "@mui/material"
 
 
 export const SignUpButton = ({ onClick }) => {  
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
   <Button 
-    onClick={onClick}
     type="submit"
     variant="contained"
+    disableElevation
+    onClick={onClick}
     sx={{
       cursor: "pointer",
       width: "100%",
@@ -27,7 +28,7 @@ export const SignUpButton = ({ onClick }) => {
       transition: "all 0.375s",
       marginTop: "18px",
     }}>
-      {t("join")}
+      {t("registration")}
   </Button> 
   )
 }

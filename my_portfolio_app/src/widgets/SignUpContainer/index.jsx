@@ -18,7 +18,7 @@ export const SignUpContainer = ({ children }) => {
     }}>
     <Box
     sx={{
-      paddingTop: spacing[4],
+      paddingTop: spacing[3],
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
@@ -38,7 +38,7 @@ export const SignUpContainer = ({ children }) => {
       <Box 
         sx={{
           width: "400px",
-          padding: "40px 30px 32px",
+          padding: "20px 30px 32px",
           borderRadius: "8px",
           backgroundColor: "#f9f5f0",
           textAlign: "center",

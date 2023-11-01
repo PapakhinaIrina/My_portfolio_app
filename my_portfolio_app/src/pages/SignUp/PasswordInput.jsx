@@ -1,21 +1,35 @@
+import { useTranslation } from 'react-i18next'
 import { FormControl, InputLabel, InputAdornment, OutlinedInput, IconButton  } from "@mui/material"
 import { VisibilityOff, Visibility } from "@mui/icons-material"
 
 
-export const PasswordInput = ({setShowPassword, showPassword}) => {
+export const PasswordInput = ({setShowPassword, showPassword, onChange, value, setValue }) => {
+  const { t } = useTranslation();
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <FormControl 
+    <FormControl
     sx={{ 
       width: "100%",
-      marginTop: "10px"
+      cursor: "pointer",
       }} 
       variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <InputLabel 
+        required 
+        htmlFor="outlined-adornment-password">
+          {t("password")}
+      </InputLabel>
+
       <OutlinedInput
         id="outlined-adornment-password"
         type={showPassword ? 'text' : 'password'}
+        label="password"
+        value={value.password}
+        name='password'
+        onChange={onChange}
+        setValue={setValue?.password}
+
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -27,7 +41,6 @@ export const PasswordInput = ({setShowPassword, showPassword}) => {
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
       />
       </FormControl>
   )

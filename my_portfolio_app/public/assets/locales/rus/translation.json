@@ -11,7 +11,14 @@
   "social_media": "Социальные сети",
   "user_name": "Ваше имя",
   "create_account": "Создать учетную запись",
-  "join": "Присоединяйся",
+  "registration": "Регистрация",
   "has_account": "Вы уже имеете аккаунт?",
-  "login_in_here": "Войти в свой аккаунт"
+  "login_in_here": "Войти в свой аккаунт",
+  "password": "Пароль",
+  "first_name": "Имя",
+  "last_name": "Фамилия",
+  "sex": "Пол",
+  "male": "Женский",
+  "female": "Мужской",  
+  "email": "Email"
 }

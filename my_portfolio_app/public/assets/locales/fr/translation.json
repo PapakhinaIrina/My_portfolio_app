@@ -11,7 +11,14 @@
   "social_media": "Médias sociaux",
   "user_name": "Votre nom",
   "create_account": "Créer votre compte",
-  "join": "Rejoignez",
+  "registration": "Registration",
   "has_account": "Avez déjà un compte?",
-  "login_in_here": "Connectez-vous ici"
+  "login_in_here": "Connectez-vous ici",
+  "password": "Mot de passe",
+  "first_name": "Prénom",
+  "last_name": "Nom",
+  "sex": "Le genre",
+  "male": "Femme",
+  "female": "Homme",
+  "email": "Email"
 }

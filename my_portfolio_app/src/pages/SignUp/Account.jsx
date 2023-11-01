@@ -11,7 +11,7 @@ export const Account = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "40px",
+        marginTop: "10px",
         width: "500px",
       }}
     >

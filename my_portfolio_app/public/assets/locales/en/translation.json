@@ -11,7 +11,14 @@
   "social_media": "Social media",
   "user_name": "Your name",
   "create_account": "Create your account",
-  "join": "Join",
+  "registration": "Registration",
   "has_account": "Already have an account?",
-  "login_in_here": "Log in here"
+  "login_in_here": "Log in here",
+  "password": "Password",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "sex": "Пол",
+  "male": "Male",
+  "female": "Female",
+  "email": "Email"
 }
