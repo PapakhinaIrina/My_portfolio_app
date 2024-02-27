@@ -62,6 +62,12 @@ const Portfolio = () => {
           </Link>
         </Box>
 
+        <Box>
+          <Link to="/portfolio/weather">
+          {t("weather").toUpperCase()}
+          </Link>
+        </Box>
+
       </Container>
     </Container>
   )

@@ -6,6 +6,7 @@ import SignUp from "./SignUp/SignUp"
 import Widget from "../pages/WidgetComponent/Widget"
 import Planner from "../pages/Planner/Planner"
 import PhotoGallery from '../pages/PhotoGallery/PhotoGallery'
+import Weather from '../pages/Weather/Weather'
 
 export const Router = () => {
   return (
@@ -17,6 +18,7 @@ export const Router = () => {
       <Route path="/portfolio/widget" element={<Widget />}/>
       <Route path="/portfolio/planner" element={<Planner />}/>
       <Route path="/portfolio/photo_gallery" element={<PhotoGallery />} />
+      <Route path="/portfolio/weather" element={<Weather />} />
     </Routes>
   )
 }

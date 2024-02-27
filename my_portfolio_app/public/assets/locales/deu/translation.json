@@ -20,5 +20,7 @@
   "sex": "Unser",
   "male": "Männlich",
   "female": "Weiblich",
-  "email": "Email"
+  "email": "Email",
+  "weather": "Wetter"
+
 }
