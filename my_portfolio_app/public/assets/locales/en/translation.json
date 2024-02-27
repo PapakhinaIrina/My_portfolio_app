@@ -20,5 +20,6 @@
   "sex": "Пол",
   "male": "Male",
   "female": "Female",
-  "email": "Email"
+  "email": "Email",
+  "weather": "Weather"
 }

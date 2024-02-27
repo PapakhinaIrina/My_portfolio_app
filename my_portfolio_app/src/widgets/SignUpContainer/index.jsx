@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Container, Box, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
-import image from "../../shared/ui/SignUpImage/image.svg"
+import image from "../../shared/ui/Image/SignUp/image.svg"
 import { headerHeight } from "../../shared/constants/componentSize"
 import { spacing } from "../../shared/constants/spacing"
 
