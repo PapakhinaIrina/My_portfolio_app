@@ -1,140 +1,147 @@
-import React from "react"
-import { Container, Typography, Box } from "@mui/material"
-import { Icon } from "@iconify/react"
-import { Animation } from "../../widgets/ui/animation/Animation"
-import { CONSTANTS } from "../../shared/constants/constants"
-import { ButtonHome } from "../../widgets/buttonHome/ButtonHome"
-import { headerHeight } from "../../shared/constants/componentSize"
-import { spacing } from "../../shared/constants/spacing"
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { Container, Typography, Box } from '@mui/material';
+import { Icon } from '@iconify/react';
+import { Animation } from '../../widgets/ui/animation/Animation';
+import { CONSTANTS } from '../../shared/constants/constants';
+import { ButtonHome } from '../../widgets/buttonHome/ButtonHome';
+import { headerHeight } from '../../shared/constants/componentSize';
+import { spacing } from '../../shared/constants/spacing';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
-const { t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container
       sx={{
         height: `calc(100vh - ${headerHeight})`,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        justifyItems: "center",
-      }}>
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        justifyItems: 'center',
+      }}
+    >
       <Container
         sx={{
-          marginTop: "100px",
-          width: "280px"
-        }}>
-
-        <Box          
+          marginTop: '100px',
+          width: '280px',
+        }}
+      >
+        <Box
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: `calc(${headerHeight}px + ${spacing[2]})`,
             left: spacing[2],
-          }}>
-        <ButtonHome />
+          }}
+        >
+          <ButtonHome />
         </Box>
 
         <Box>
-        <Typography
-            align="center"
-            variant="h4"
-            fontFamily="Dosis"
-            fontWeight="bold"
-          > 
-            {t("communication")}
+          <Typography align='center' variant='h4' fontFamily='Dosis' fontWeight='bold'>
+            {t('communication')}
           </Typography>
         </Box>
 
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}>
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-            <Icon icon="line-md:email" width={46} color="#777777"/>
-              { CONSTANTS.email }
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <Icon icon='line-md:email' width={46} color='#777777' />
+            {CONSTANTS.email}
           </Box>
 
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}>
-            <Icon icon="line-md:telegram" width={46} color="#777777"/>
-            { CONSTANTS.telegram }
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'row',
+            }}
+          >
+            <Icon icon='line-md:telegram' width={46} color='#777777' />
+            {CONSTANTS.telegram}
           </Box>
 
-          <Box 
+          <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}>
-            <Icon icon="ion:phone-portrait-outline" width={46} color="#777777"/>
-              { CONSTANTS.phoneNumber }
+              alignItems: 'center',
+              display: 'flex',
+              flexDirection: 'row',
+            }}
+          >
+            <Icon icon='ion:phone-portrait-outline' width={46} color='#777777' />
+            {CONSTANTS.phoneNumber}
           </Box>
         </Box>
 
-          <br/>
-          <br/>
+        <br />
+        <br />
         <Box>
-          <Typography
-            align="center"
-            fontFamily="Dosis"
-            fontWeight="bold"
-            variant="h5"
-            >
-            {t("social_media")}
+          <Typography align='center' fontFamily='Dosis' fontWeight='bold' variant='h5'>
+            {t('social_media')}
           </Typography>
         </Box>
 
-        <br/>
+        <br />
         <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center"
-        }}>
-            <li>
-              <a href="https://www.instagram.com/_papakha_/?igshid=YmMyMTA2M2Y%3D" target="blank" className="iconInstagram">
-                <Icon icon="line-md:instagram" width={46} color="#777777"/>
-              </a>
-            </li>
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+        >
+          <li>
+            <a
+              href='https://www.instagram.com/_papakha_/?igshid=YmMyMTA2M2Y%3D'
+              target='blank'
+              className='iconInstagram'
+            >
+              <Icon icon='line-md:instagram' width={46} color='#777777' />
+            </a>
+          </li>
 
-            <li >
-              <a href="https://www.linkedin.com/in/irina-papakhina-52598524a/" target="blank" rel="noreferrer" className="iconLinkedin">
-                <Icon icon="line-md:linkedin" width={46} color="#777777"/>
-              </a>
-            </li>
+          <li>
+            <a
+              href='https://www.linkedin.com/in/irina-papakhina-52598524a/'
+              target='blank'
+              rel='noreferrer'
+              className='iconLinkedin'
+            >
+              <Icon icon='line-md:linkedin' width={46} color='#777777' />
+            </a>
+          </li>
 
-            <li>
-              <a href="https://github.com/PapakhinaIrina" target="blank" rel="noreferrer" className="iconGithub">
-                <Icon icon="line-md:github" width={46} color="#777777"/>
-              </a>
-            </li>
+          <li>
+            <a href='https://github.com/PapakhinaIrina' target='blank' rel='noreferrer' className='iconGithub'>
+              <Icon icon='line-md:github' width={46} color='#777777' />
+            </a>
+          </li>
         </Box>
         <Box
-        sx={{
-          alignItems: "center",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: spacing[3],
-        }}>
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: spacing[3],
+          }}
+        >
           <Animation />
         </Box>
-        </Container>
+      </Container>
     </Container>
-  )
-} 
+  );
+};
 
 export default Contact;

@@ -1,31 +1,30 @@
-import React, {useState, useEffect} from "react"
-import Calendar from "./Calendar"
-import FormModalEvent from "../../widgets/ModalEvents/ModalEvents"
-import { CalendarFooter } from "../../entities/CalendarFooter/CalendarFooter"
-import { DayShowComponent } from "../../widgets/DayShowComponent/DayShowComponent"
-import { Container, Button, Box } from "@mui/material"
-import { Icon } from "@iconify/react"
-import { spacing } from "../../shared/constants/spacing"
-import { DISPLAY_MODE_MONTH, DISPLAY_MODE_DAY } from "../../shared/constants/constants"
-import { url } from "../../shared/constants/url"
-import moment from "moment"
-import { v4 as uuidv4 } from "uuid"
+import React, { useState, useEffect } from 'react';
+import Calendar from './Calendar';
+import FormModalEvent from '../../widgets/ModalEvents/ModalEvents';
+import { CalendarFooter } from '../../entities/CalendarFooter/CalendarFooter';
+import { DayShowComponent } from '../../widgets/DayShowComponent/DayShowComponent';
+import { Container, Button, Box } from '@mui/material';
+import { Icon } from '@iconify/react';
+import { spacing } from '../../shared/constants/spacing';
+import { DISPLAY_MODE_MONTH, DISPLAY_MODE_DAY } from '../../shared/constants/constants';
+import { url } from '../../shared/constants/url';
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
 const defaultEvent = {
   title: '',
   description: '',
   duration: 1,
-  date: moment().format('X')
+  date: moment().format('X'),
 };
 
 const Planner = () => {
-
   const [today, setToday] = useState(moment());
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState(null);
   const [currentDayEvents, setCurrentDayEvents] = useState([]);
   const [isShowForm, setIsShowForm] = useState(false);
-  const [method, setMethod] = useState(null);    
+  const [method, setMethod] = useState(null);
   const [value, setValue] = useState(defaultEvent);
   const [displayMode, setDisplayMode] = useState('month');
 
@@ -37,24 +36,25 @@ const Planner = () => {
 
   useEffect(() => {
     fetch(`${url}/events?date_gte=${startDateQueryPlanner}&date_lte=${endDateQueryPlanner}`)
-    .then(res => res.json())
-    .then(res => {
-      setCurrentDayEvents(res)})
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [JSON.stringify(events)] );
+      .then((res) => res.json())
+      .then((res) => {
+        setCurrentDayEvents(res);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(events)]);
 
-  const prevHandler = () => setToday(prev => prev.clone().subtract(1, displayMode));
+  const prevHandler = () => setToday((prev) => prev.clone().subtract(1, displayMode));
   const todayHandler = () => setToday(moment());
-  const nextHandler = () => setToday(prev => prev.clone().add(1, displayMode));
+  const nextHandler = () => setToday((prev) => prev.clone().add(1, displayMode));
 
   const selectedDay = moment().startOf('day').format('Do');
-  const selectedMonthMonth =  today.startOf('month').format('MMM');
-  const selectedYearYear =  moment().startOf('year').format('YYYY');
+  const selectedMonthMonth = today.startOf('month').format('MMM');
+  const selectedYearYear = moment().startOf('year').format('YYYY');
 
   const openFormHandler = (methodName, eventForUpdate, dayItem) => {
-    setEvent(eventForUpdate || {...defaultEvent, date: dayItem.format('X')});
+    setEvent(eventForUpdate || { ...defaultEvent, date: dayItem.format('X') });
     setMethod(methodName);
-    setValue({...value, title: eventForUpdate?.title, description: eventForUpdate?.description})
+    setValue({ ...value, title: eventForUpdate?.title, description: eventForUpdate?.description });
   };
 
   const openModalFormHandler = (methodName, eventForUpdate, dayItem) => {
@@ -68,37 +68,36 @@ const Planner = () => {
   };
 
   const changeEventHandler = (text, field) => {
-    setEvent(prev => ({
+    setEvent((prev) => ({
       ...prev,
-      [field]: text
-    }))
+      [field]: text,
+    }));
   };
 
   const fetchHandler = (fetchUrl, eventForUpdate, httpMethod) => {
-    
     fetch(fetchUrl, {
       method: httpMethod,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(eventForUpdate)
+      body: JSON.stringify(eventForUpdate),
     })
-      .then(res => res.json())
-      .then(res => {
-        if(httpMethod === 'PATCH') {
-          setEvents(prev => prev.map(eventEl => eventEl.id === res.id ? res : eventEl))
+      .then((res) => res.json())
+      .then((res) => {
+        if (httpMethod === 'PATCH') {
+          setEvents((prev) => prev.map((eventEl) => (eventEl.id === res.id ? res : eventEl)));
         } else {
-          setEvents(prev => [...prev, res])
+          setEvents((prev) => [...prev, res]);
         }
-        cancelFormHandler()
-    })
-  }
+        cancelFormHandler();
+      });
+  };
 
   const eventFetchHandler = () => {
     const fetchUrl = method === 'Update' ? `${url}/events/${event.id}` : `${url}/events`;
-    const httpMethod = method === 'Update' ? 'PATCH' : 'POST';    
+    const httpMethod = method === 'Update' ? 'PATCH' : 'POST';
     fetchHandler(fetchUrl, event, httpMethod);
-  }
+  };
 
   const deleteEventHandler = () => {
     const fetchUrl = `${url}/events/${event.id}`;
@@ -107,134 +106,133 @@ const Planner = () => {
     fetch(fetchUrl, {
       method: httpMethod,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         console.log(res);
-        setEvents(prev => prev.filter(eventEl => eventEl.id !== event.id))
-        cancelFormHandler()
-      })
-  }
+        setEvents((prev) => prev.filter((eventEl) => eventEl.id !== event.id));
+        cancelFormHandler();
+      });
+  };
 
   return (
-    <Container 
+    <Container
       disableGutters
       sx={{
         paddingTop: spacing[4],
-        maxWidth: "1060px",
-      }}>
-      <Container 
+        maxWidth: '1060px',
+      }}
+    >
+      <Container
         sx={{
-          display: "flex",
-          position: "relative",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#F5F5F5",
-          borderRadius: "8px",
-          border: "1px solid rgba(105, 112, 112, 0.409)",
-          boxShadow: "rgba(133, 134, 167, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
-          paddingBottom: spacing[3]
-        }}>
-        <Box 
+          display: 'flex',
+          position: 'relative',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#F5F5F5',
+          borderRadius: '8px',
+          border: '1px solid rgba(105, 112, 112, 0.409)',
+          boxShadow: 'rgba(133, 134, 167, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+          paddingBottom: spacing[3],
+        }}
+      >
+        <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}>
-          <Box 
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              fontSize: "30px",
-              fontFamily: "cursive",
-            }}>
-            {[selectedMonthMonth, " ",  selectedDay , " ", selectedYearYear]}
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              fontSize: '30px',
+              fontFamily: 'cursive',
+            }}
+          >
+            {[selectedMonthMonth, ' ', selectedDay, ' ', selectedYearYear]}
 
-            <Box 
+            <Box
               sx={{
-                display: "flex",
-                flexDirection: "row",
-                fontSize: "20px",
-              }}>
-              <Button 
+                display: 'flex',
+                flexDirection: 'row',
+                fontSize: '20px',
+              }}
+            >
+              <Button
                 key={uuidv4()}
                 onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}
                 isPressed={displayMode === DISPLAY_MODE_MONTH}
                 sx={{
-                  boxShadow: displayMode === DISPLAY_MODE_MONTH ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none",
-                  color: displayMode === DISPLAY_MODE_MONTH ? "white" : "rgb(73, 79, 79)" ,
-                  cursor: "pointer",
-                  backgroundColor: displayMode === DISPLAY_MODE_MONTH ? "#bdbdbd" : "none",
-                }}>
-                  Month
+                  boxShadow: displayMode === DISPLAY_MODE_MONTH ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
+                  color: displayMode === DISPLAY_MODE_MONTH ? 'white' : 'rgb(73, 79, 79)',
+                  cursor: 'pointer',
+                  backgroundColor: displayMode === DISPLAY_MODE_MONTH ? '#bdbdbd' : 'none',
+                }}
+              >
+                Month
               </Button>
-              <Button 
+              <Button
                 key={uuidv4()}
                 onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}
                 isPressed={displayMode === DISPLAY_MODE_DAY}
                 sx={{
-                  boxShadow: displayMode === DISPLAY_MODE_DAY ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none",
-                  color: displayMode === DISPLAY_MODE_DAY ? "white" : "rgb(73, 79, 79)" ,
-                  cursor: "pointer",
-                  backgroundColor: displayMode === DISPLAY_MODE_DAY ? "#bdbdbd" : "none",
-                }}> 
-                  Day
-                </Button>
+                  boxShadow: displayMode === DISPLAY_MODE_DAY ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
+                  color: displayMode === DISPLAY_MODE_DAY ? 'white' : 'rgb(73, 79, 79)',
+                  cursor: 'pointer',
+                  backgroundColor: displayMode === DISPLAY_MODE_DAY ? '#bdbdbd' : 'none',
+                }}
+              >
+                Day
+              </Button>
             </Box>
 
-            <Box 
+            <Box
               sx={{
-                display: "flex",
-                flexDirection: "row",
-                fontSize: "20px",
-                color: "rgb(73, 79, 79)"
-              }}>
-
-              <Button key={uuidv4()}
-                onClick={() => prevHandler(today)}>
-                  <Icon icon="ooui:next-rtl" width={15} color="rgba(73, 79, 79, 0.473)"/>
+                display: 'flex',
+                flexDirection: 'row',
+                fontSize: '20px',
+                color: 'rgb(73, 79, 79)',
+              }}
+            >
+              <Button key={uuidv4()} onClick={() => prevHandler(today)}>
+                <Icon icon='ooui:next-rtl' width={15} color='rgba(73, 79, 79, 0.473)' />
               </Button>
-              <Box 
-                onClick={() => todayHandler(today)}>
-                Today
-              </Box>
-              <Button key={uuidv4()}
-                onClick={() => nextHandler(today)}>
-                <Icon icon="ooui:next-ltr" width={15} color="rgba(73, 79, 79, 0.473)"/>
+              <Box onClick={() => todayHandler(today)}>Today</Box>
+              <Button key={uuidv4()} onClick={() => nextHandler(today)}>
+                <Icon icon='ooui:next-ltr' width={15} color='rgba(73, 79, 79, 0.473)' />
               </Button>
-
             </Box>
-        </Box>
+          </Box>
 
-        <Box>
-          { 
-            displayMode === DISPLAY_MODE_MONTH ? (
-            <>
-              <Calendar 
-                today={today}
-                method={method}
-                events={events}
-                setEvents={setEvents}
-                setIsShowForm={setIsShowForm}
-                openModalFormHandler={openModalFormHandler}
-                isShowForm={isShowForm}
-                cancelFormHandler={cancelFormHandler}
-                changeEventHandler={changeEventHandler}
-                eventFetchHandler={eventFetchHandler}
-                deleteEventHandler={deleteEventHandler}
-                openFormHandler={openFormHandler}
+          <Box>
+            {displayMode === DISPLAY_MODE_MONTH ? (
+              <>
+                <Calendar
+                  today={today}
+                  method={method}
+                  events={events}
+                  setEvents={setEvents}
+                  setIsShowForm={setIsShowForm}
+                  openModalFormHandler={openModalFormHandler}
+                  isShowForm={isShowForm}
+                  cancelFormHandler={cancelFormHandler}
+                  changeEventHandler={changeEventHandler}
+                  eventFetchHandler={eventFetchHandler}
+                  deleteEventHandler={deleteEventHandler}
+                  openFormHandler={openFormHandler}
                 />
-              <CalendarFooter currentDayEvents={currentDayEvents}/>
-            </>
+                <CalendarFooter currentDayEvents={currentDayEvents} />
+              </>
             ) : null}
-          
-          { 
-            displayMode === DISPLAY_MODE_DAY ? (
+
+            {displayMode === DISPLAY_MODE_DAY ? (
               <DayShowComponent
                 currentDayEvents={currentDayEvents}
-                setCurrentDayEvents={setCurrentDayEvents}           
+                setCurrentDayEvents={setCurrentDayEvents}
                 openFormHandler={openFormHandler}
                 openModalFormHandler={openModalFormHandler}
                 isShowForm={isShowForm}
@@ -251,24 +249,23 @@ const Planner = () => {
                 today={today}
               />
             ) : null}
-        </Box>
-
-          <FormModalEvent 
-              isShowForm={isShowForm}
-              cancelFormHandler={cancelFormHandler}
-              eventFetchHandler={eventFetchHandler}
-              deleteEventHandler={deleteEventHandler}
-              changeEventHandler={changeEventHandler}
-              event={event}
-              method={method}
-              setValue={setValue}
-              value={value}
-              setEvent={setEvent}
-          />
-
           </Box>
+
+          <FormModalEvent
+            isShowForm={isShowForm}
+            cancelFormHandler={cancelFormHandler}
+            eventFetchHandler={eventFetchHandler}
+            deleteEventHandler={deleteEventHandler}
+            changeEventHandler={changeEventHandler}
+            event={event}
+            method={method}
+            setValue={setValue}
+            value={value}
+            setEvent={setEvent}
+          />
+        </Box>
       </Container>
     </Container>
-  )
-}
+  );
+};
 export default Planner;

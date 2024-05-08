@@ -1,13 +1,13 @@
-import { useState, useLayoutEffect } from "react"
+import { useState, useLayoutEffect } from 'react';
 
 const queries = [
-  // mobile 
-  "(max-width: 766px)", 
+  // mobile
+  '(max-width: 766px)',
   // tablet
-  "(min-width: 767px) and (max-width: 1199px)", 
+  '(min-width: 767px) and (max-width: 1199px)',
   // desktop
-  "(min-width: 1820px)" 
-]
+  '(min-width: 1820px)',
+];
 export const useMatchMedia = () => {
   const mediaQueriLists = queries.map((el) => matchMedia(el));
   const getValues = () => mediaQueriLists.map((el) => el.matches);
@@ -17,10 +17,15 @@ export const useMatchMedia = () => {
   useLayoutEffect(() => {
     const handler = () => setValues(getValues);
 
-    mediaQueriLists.forEach((el) => el.addEventListener('change', handler));
-    
-    return () => mediaQueriLists.forEach((el) => el.removeEventListener('change', handler));
-  }, [])
-  
-  return [ 'isMobile', 'isTablet', 'isDesktop'].reduce((acc, currentScreen, index) => ({...acc, [currentScreen]: values[index]}), {})
-}
+    for (const el of mediaQueriLists) el.addEventListener('change', handler);
+
+    return () => {
+      for (const el of mediaQueriLists) el.removeEventListener('change', handler);
+    };
+  }, []);
+
+  return ['isMobile', 'isTablet', 'isDesktop'].reduce(
+    (acc, currentScreen, index) => ({ ...acc, [currentScreen]: values[index] }),
+    {},
+  );
+};
