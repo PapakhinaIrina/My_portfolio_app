@@ -1,8 +1,8 @@
-import { Icon } from "@iconify/react"
-import { Container, Link } from "@mui/material"
-import { headerHeight } from "../../shared/constants/componentSize"
-import { spacing } from "../../shared/constants/spacing"
-
+/* eslint-disable unicorn/filename-case */
+import { Icon } from '@iconify/react';
+import { Container, Link } from '@mui/material';
+import { headerHeight } from '../../shared/constants/componentSize';
+import { spacing } from '../../shared/constants/spacing';
 
 export const ButtonHome = () => {
   return (
@@ -12,15 +12,15 @@ export const ButtonHome = () => {
       }}
     >
       <Link
-      sx={{
-        position: "absolute",
-        top: spacing[3],
-        left: spacing[3],
-      }}
-      href="/"
+        sx={{
+          position: 'absolute',
+          top: spacing[3],
+          left: spacing[3],
+        }}
+        href='/'
       >
-        <Icon icon="line-md:home-md"width={46} color='#777777' cursor="pointer"/>
+        <Icon icon='line-md:home-md' width={46} color='#777777' cursor='pointer' />
       </Link>
-  </Container>
-  )
-}
+    </Container>
+  );
+};

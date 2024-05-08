@@ -1,27 +1,26 @@
-import "./index.scss"
+import styles from './index.scss';
 
 export const Animation = () => {
-
-  return(
-    <div aria-busy="true" aria-label="Loading" role="progressbar" className="box">
-    <div className="swing">
-      <div className="swing-l"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div className="swing-r"></div>
-  </div>
-    <div className="shadow">
-      <div className="shadow-l"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div className="shadow-r"></div>
+  return (
+    <div aria-busy='true' aria-label='Loading' role='progressbar' className={styles.box}>
+      <div className={styles.swing}>
+        <div className={styles['swing-l']}></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div className={styles['swing-r']}></div>
+      </div>
+      <div className={styles.shadow}>
+        <div className={styles['shadow-l']}></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div className={styles['shadow-r']}></div>
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};

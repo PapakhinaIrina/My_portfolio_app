@@ -1,10 +1,11 @@
-import React from "react";
-import { Box, Input } from "@mui/material";
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
+import { Box, Input } from '@mui/material';
 
-
-export const SearchLocation = ({props}) => {
+export const SearchLocation = ({ props }) => {
   return (
-    <Box 
+    <Box
       sx={{
         position: 'relative',
         display: 'flex',
@@ -13,13 +14,13 @@ export const SearchLocation = ({props}) => {
         alignItems: 'center',
         textAlign: 'center',
         padding: '3rem',
-        width: '600px'
+        width: '600px',
       }}
     >
       <Input
-        type="text"
+        type='text'
         fullWidth
-        placeholder='Enter Location' 
+        placeholder='Enter Location'
         disableUnderline={true}
         sx={{
           padding: '.7rem 1.5rem',
@@ -31,5 +32,5 @@ export const SearchLocation = ({props}) => {
         }}
       />
     </Box>
-  )
-}
+  );
+};

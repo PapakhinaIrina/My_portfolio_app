@@ -1,10 +1,11 @@
-import React from "react"
-import { Header } from "../widgets/Header/Header"
-export const Layout = ({children}) => {
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Header } from '../widgets/Header/Header';
+export const Layout = ({ children }) => {
   return (
     <>
       <Header />
       {children}
     </>
-  )
-}
+  );
+};
