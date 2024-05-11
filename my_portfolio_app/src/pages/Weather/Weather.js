@@ -1,13 +1,43 @@
-import React, { useState, useCallback } from 'react';
-import { Box, Button, Container, Input } from '@mui/material';
+/* eslint-disable unicorn/filename-case */
+import React, { useState, useCallback, useEffect } from 'react';
+import { Box, Button, Container } from '@mui/material';
 import { SearchLocation } from '../../shared/ui/SearchLocation';
 import Img from '/Applications/MAMP/htdocs/My_portfolio_app/my_portfolio_app/src/shared/ui/Image/Weather/sunset.png';
-import axios from 'axios';
-import { getWeatherByCity } from '../../shared/api/Weaather';
+import { getWeatherByCity } from '../../shared/api/Weather';
+import { urlWeather } from '../../shared/constants/url';
 
 const Weather = () => {
-  const [data, setData] = useState([]);
-  const [location, setLocation] = useState('');
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState(null);
+
+  const getWeather = async (location) => {
+    if (location) {
+      try {
+        const res = await fetch(`${urlWeather}/weather?location=${location}`);
+        const weatherData = await res.json();
+        const filteredData = weatherData.find((el) => el.country === location);
+        setData(filteredData);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getWeather(location);
+  }, []);
+
+  const searchLocation = useCallback((event) => {
+    event.preventDefault();
+    console.log(event);
+    if (event.code === 'Enter') {
+      console.log(location);
+      const res = getWeather(location);
+      return res;
+    }
+  }, []);
+
+  console.log(data);
 
   return (
     <Container
@@ -24,7 +54,13 @@ const Weather = () => {
         opacity: 0.7,
       }}
     >
-      <SearchLocation />
+      <SearchLocation
+        type='text'
+        value={location}
+        onChange={(event) => setLocation(event.target.value)}
+        onKeyPress={searchLocation}
+        placeholder='Search Location'
+      />
 
       <Box
         sx={{
