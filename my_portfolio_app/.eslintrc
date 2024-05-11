@@ -13,7 +13,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "unicorn"],
+  "plugins": ["react", "react-hooks", "prettier", "unicorn"],
   "rules": {
     "arrow-body-style": "off",
     "prefer-arrow-callback": "off",

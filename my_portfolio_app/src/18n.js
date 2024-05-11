@@ -21,5 +21,4 @@ i18n
     backend: {
       loadPath: '/assets/locales/{{lng}}/translation.json',
     },
-    // react: { useSuspense: false }
   });

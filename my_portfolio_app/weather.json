@@ -1,0 +1,54 @@
+{
+  "weather": [
+    {
+      "country": "Австралия",
+      "temperature": 25,
+      "precipitation": "Низкий",
+      "weatherType": "Солнце",
+      "probabilityOfRain": 10,
+      "humidity": 60,
+      "windSpeed": 5,
+      "id": 1
+    },
+    {
+      "country": "Великобритания",
+      "temperature": 18,
+      "precipitation": "Средний",
+      "weatherType": "Дождь",
+      "probabilityOfRain": 50,
+      "humidity": 80,
+      "windSpeed": 15,
+      "id": 2
+    },
+    {
+      "country": "Ирландия",
+      "temperature": 16,
+      "precipitation": "Высокий",
+      "weatherType": "Туман",
+      "probabilityOfRain": 70,
+      "humidity": 90,
+      "windSpeed": 10,
+      "id": 3
+    },
+    {
+      "country": "США",
+      "temperature": 30,
+      "precipitation": "Низкий",
+      "weatherType": "Солнце",
+      "probabilityOfRain": 20,
+      "humidity": 40,
+      "windSpeed": 8,
+      "id": 4
+    },
+    {
+      "country": "Япония",
+      "temperature": 22,
+      "precipitation": "Средний",
+      "weatherType": "Снег",
+      "probabilityOfRain": 30,
+      "humidity": 75,
+      "windSpeed": 12,
+      "id": 5
+    }
+  ]
+}

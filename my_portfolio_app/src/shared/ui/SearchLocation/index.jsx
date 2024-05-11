@@ -3,7 +3,7 @@
 import React from 'react';
 import { Box, Input } from '@mui/material';
 
-export const SearchLocation = ({ props }) => {
+export const SearchLocation = ({ type, value, onChange, onKeyPress, placeholder }) => {
   return (
     <Box
       sx={{
@@ -18,9 +18,12 @@ export const SearchLocation = ({ props }) => {
       }}
     >
       <Input
-        type='text'
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
         fullWidth
-        placeholder='Enter Location'
         disableUnderline={true}
         sx={{
           padding: '.7rem 1.5rem',
