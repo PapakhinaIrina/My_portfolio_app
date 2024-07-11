@@ -8,7 +8,7 @@ import { urlWeather } from '../../shared/constants/url';
 
 const Weather = () => {
   const [data, setData] = useState({});
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState('');
 
   const getWeather = async (location) => {
     if (location) {
@@ -27,17 +27,23 @@ const Weather = () => {
     getWeather(location);
   }, []);
 
-  const searchLocation = useCallback((event) => {
-    event.preventDefault();
-    console.log(event);
-    if (event.code === 'Enter') {
-      console.log(location);
-      const res = getWeather(location);
-      return res;
-    }
-  }, []);
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (event.key === 'Enter') {
+        setTimeout(() => {
+          getWeather(location.toUpperCase())
+            .then((res) => console.log(res))
+            .catch((error) => console.log(error));
+        }, 0);
+      }
+    },
+    [location],
+  );
 
-  console.log(data);
+  const handleChange = (event) => {
+    console.log(event);
+    setLocation(event.target.value);
+  };
 
   return (
     <Container
@@ -57,8 +63,8 @@ const Weather = () => {
       <SearchLocation
         type='text'
         value={location}
-        onChange={(event) => setLocation(event.target.value)}
-        onKeyPress={searchLocation}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
         placeholder='Search Location'
       />
 

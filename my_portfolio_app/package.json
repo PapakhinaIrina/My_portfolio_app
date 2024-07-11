@@ -45,7 +45,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "json-server -p 3001 --watch db.json",
-    "serve-weather": "json-server -p 3002 --watch weather.json"
+    "serve-weather": "json-server -p 3003 --watch weather.json"
   },
   "eslintConfig": {
     "extends": [
@@ -69,7 +69,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.22.11",
     "@babel/preset-react": "^7.22.15",
-    "eslint": "^8.57.0",
+    "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-unicorn": "^52.0.0",

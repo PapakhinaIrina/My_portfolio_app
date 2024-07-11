@@ -21,6 +21,7 @@
     "camelcase": "off",
     "spaced-comment": "error",
     "quotes": ["error", "single"],
+    "no-trailing-spaces": ["error"],
     "unicorn/filename-case": [
       "warn",
       {
