@@ -4,7 +4,12 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,15 +18,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "prettier", "unicorn"],
+  "plugins": ["react", "react-hooks", "unicorn"],
   "rules": {
-    "arrow-body-style": "off",
-    "prefer-arrow-callback": "off",
+    "quotes": ["error", "single"],
     "react/react-in-jsx-scope": "off",
     "camelcase": "off",
-    "spaced-comment": "error",
-    "quotes": ["error", "single"],
-    "no-trailing-spaces": ["error"],
+    "no-trailing-spaces": ["warn"],
     "unicorn/filename-case": [
       "warn",
       {
@@ -30,36 +32,6 @@
     ],
     "semi": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "unicorn/better-regex": "error",
-    "unicorn/catch-error-name": "error",
-    "unicorn/consistent-destructuring": "error",
-    "unicorn/custom-error-definition": "off",
-    "unicorn/empty-brace-spaces": "error",
-    "unicorn/error-message": "error",
-    "unicorn/escape-case": "error",
-    "unicorn/explicit-length-check": "error",
-    "unicorn/import-style": "error",
-    "unicorn/new-for-builtins": "error",
-    "unicorn/no-abusive-eslint-disable": "error",
-    "unicorn/no-array-callback-reference": "error",
-    "unicorn/no-array-for-each": "error",
-    "unicorn/no-array-method-this-argument": "error",
-    "unicorn/no-array-push-push": "error",
-    "unicorn/no-await-expression-member": "error",
-    "unicorn/no-console-spaces": "error",
-    "unicorn/no-document-cookie": "error",
-    "unicorn/no-empty-file": "error",
-    "unicorn/no-for-loop": "error",
-    "unicorn/no-hex-escape": "error",
-    "unicorn/no-instanceof-array": "error",
-    "unicorn/no-invalid-remove-event-listener": "error",
-    "unicorn/no-keyword-prefix": "off",
-    "unicorn/no-lonely-if": "error",
-    "no-negated-condition": "off",
-    "unicorn/no-negated-condition": "error",
-    "no-nested-ternary": "off",
-    "unicorn/no-nested-ternary": "error",
-    "unicorn/consistent-function-scoping": "off",
     "new-cap": [
       "error",
       {

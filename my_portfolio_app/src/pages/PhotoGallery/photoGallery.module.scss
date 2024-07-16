@@ -1,0 +1,19 @@
+$headerHeight: 64px;
+
+.photo-gallery-container{
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 100px 60px 800px;
+  max-width: 100vw;
+  height: calc(100vh - #{$headerHeight});
+  justify-content: center;
+}
+
+.photo-gallery-wrapper{
+  width: 700px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid #616161;
+  border-radius: 5px;
+}

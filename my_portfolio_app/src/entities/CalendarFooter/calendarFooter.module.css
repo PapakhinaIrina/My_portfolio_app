@@ -1,0 +1,36 @@
+.calendar-footer-wrapper {
+  font-family: 'Segoe UI';
+  font-size: 25px;
+  max-height: 150px;
+  max-width: 1010px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-footer-list-event-container {
+  display: flex;
+  flex-direction: row;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-footer-list-item-event {
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 500px;
+  padding-right: 16px;
+}
+
+.calendar-footer-empty-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: rgba(105, 112, 112, 0.409);
+}

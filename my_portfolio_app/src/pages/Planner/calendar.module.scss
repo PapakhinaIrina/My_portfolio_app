@@ -1,0 +1,32 @@
+$headerHeight: 64px;
+
+.calendar-wrapper {
+  display: flex;
+  flex: 1;
+  padding: 0;
+}
+
+.calendar-container {
+  height: calc(100vh - #{$headerHeight});
+  border: 1px solid rgba(105, 112, 112, 0.409);
+}
+
+.calendar-box {
+  display: grid;
+  background-color: hwb(0 100% 0%);
+  border: 0.5px solid rgba(105, 112, 112, 0.409);
+  grid-template-columns: repeat(7, 0.4fr);
+  grid-template-rows: repeat(6, 0.4fr);
+}
+
+.calendar-month {
+  border: 0.5px solid rgba(105, 112, 112, 0.409);
+  max-width: 150px;
+  min-height: 100px;
+}
+
+.calendar-day-header {
+  display: flex;
+  justify-content: flex-end;
+  height: 33px;
+}

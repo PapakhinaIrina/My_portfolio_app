@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@iconify/react": "^4.1.1",
-    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.11.16",
-    "@mui/joy": "^5.0.0-alpha.86",
     "@mui/material": "^5.11.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -27,14 +25,13 @@
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.5",
     "moment": "^2.29.4",
-    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.47.0",
     "react-i18next": "^13.2.2",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "styled-components": "^6.0.3",
+    "sass": "^1.77.8",
     "use-match-media-hook": "^1.0.1",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
@@ -45,7 +42,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "json-server -p 3001 --watch db.json",
-    "serve-weather": "json-server -p 3003 --watch weather.json"
+    "serve-weather": "json-server -p 3003 --watch weather.json",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\""
   },
   "eslintConfig": {
     "extends": [
@@ -73,7 +73,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-unicorn": "^52.0.0",
-    "prettier": "^3.1.0",
+    "prettier": "^3.3.3",
     "prettier-eslint": "^16.1.2"
   }
 }
