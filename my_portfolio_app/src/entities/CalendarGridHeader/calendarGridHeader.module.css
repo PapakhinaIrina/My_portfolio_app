@@ -1,0 +1,8 @@
+.calendar-week {
+  display: 'flex';
+  font-family: 'cursive';
+  justify-content: 'flex-end';
+  min-width: '140px';
+  max-height: '20px';
+  padding-right: '6px';
+}

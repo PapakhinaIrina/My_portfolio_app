@@ -1,23 +1,14 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import {
-  DayShowComponentContainer,
-  DayShowComponentWrapper,
-  DayShowComponentBoxItem,
-  DayShowComponentBoxEmptyList,
-  DayShowComponentBoxChosenEvent,
-  DayShowComponentButtonCreateEvent,
-  DayShowComponentScaleItem,
-  DayShowComponentScaleItemText,
-} from './styled';
+import { Box, Container, Button, Tooltip } from '@mui/material';
 import FormModalEvent from '../../widgets/ModalEvents/ModalEvents';
 import { ITEMS_PER_DAY } from '../../shared/constants/constants';
-import { Tooltip, Box } from '@mui/material';
 import { Icon } from '@iconify/react';
 import Lottie from 'lottie-react';
 import moment from 'moment';
 import Animation from '../../shared/ui/animation/animationEmptyList.json';
+import styles from './dayShowComponent.module.scss'
 
 export const DayShowComponent = (props) => {
   const {
@@ -55,22 +46,22 @@ export const DayShowComponent = (props) => {
 
   return (
     <>
-      <DayShowComponentContainer disableGutters>
+      <Container disableGutters className={styles['day-show-component-container']}>
         {currentDayEvents.length > 0 &&
           cells.map((eventsList, index) => {
             return (
-              <DayShowComponentWrapper>
+              <Box className={styles['day-show-component-wrapper']}>
                 {index && (
                   <Box sx={{ height: '60px' }} key={index}>
                     {`${index}`.padStart(2, '0')} : 00
                   </Box>
                 )}
 
-                <DayShowComponentScaleItem>
+                <Box className={styles['day-show-component-scale-item']}>
                   {eventsList.length > 0 &&
                     eventsList.map((event) => {
                       return (
-                        <DayShowComponentScaleItemText onClick={() => handleChosenEvent(event)} key={index}>
+                        <Box onClick={() => handleChosenEvent(event)} key={index} className={styles['day-show-component-scale-item-text']}>
                           <Box
                             sx={{
                               textTransform: 'capitalize',
@@ -93,22 +84,17 @@ export const DayShowComponent = (props) => {
                           >
                             <div>{event.description}</div>
                           </Box>
-                        </DayShowComponentScaleItemText>
+                        </Box>
                       );
                     })}
-                </DayShowComponentScaleItem>
-              </DayShowComponentWrapper>
+                </Box>
+              </Box>
             );
           })}
 
         {currentDayEvents.length === 0 ? (
-          <DayShowComponentBoxItem
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-            }}
-          >
-            <DayShowComponentBoxEmptyList>
+          <Box className={styles['day-show-component-box-item']}>
+            <Box className={styles['day-show-component-box-empty-list']}>
               <Lottie
                 animationData={Animation}
                 loop={true}
@@ -116,9 +102,10 @@ export const DayShowComponent = (props) => {
                 style={{ height: '100px', width: '100px' }}
               />
               No events for today
-            </DayShowComponentBoxEmptyList>
+            </Box>
             <Tooltip title='Create event for today'>
-              <DayShowComponentButtonCreateEvent
+              <Button
+                className={styles['day-show-component-button-create-event']}
                 onClick={() => {
                   openModalFormHandler('Create', null, currentDay);
                 }}
@@ -129,13 +116,13 @@ export const DayShowComponent = (props) => {
                 }}
               >
                 <Icon icon='zondicons:add-outline' width={44} color='#607d8b' />
-              </DayShowComponentButtonCreateEvent>
+              </Button>
             </Tooltip>
-          </DayShowComponentBoxItem>
+          </Box>
         ) : null}
 
         {chosenEvent.length > 0 ? (
-          <DayShowComponentBoxChosenEvent key={chosenEvent.id}>
+          <Box key={chosenEvent.id} className={styles['day-show-component-box-choosen-even']}>
             <FormModalEvent
               isShowForm={isShowForm}
               cancelFormHandler={cancelFormHandler}
@@ -147,9 +134,9 @@ export const DayShowComponent = (props) => {
               value={chosenEvent.title}
               openModalFormHandler={openModalFormHandler}
             />
-          </DayShowComponentBoxChosenEvent>
+          </Box>
         ) : null}
-      </DayShowComponentContainer>
+      </Container>
 
       <Box
         onClick={() => openModalFormHandler('Create', null, currentDay)}

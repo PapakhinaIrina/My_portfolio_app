@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { StyledInputModalEvent } from './styled';
-import { Box, Button, FormControl } from '@mui/material';
+import { Box, Button, FormControl, Input } from '@mui/material';
+import styles from './modalEvents.module.scss';
 
 export const FormModalEvent = ({
   isShowForm,
@@ -43,7 +43,8 @@ export const FormModalEvent = ({
           }}
         >
           <FormControl>
-            <StyledInputModalEvent
+            <Input
+              className={styles['modal-event-input']}
               disableUnderline
               type='text'
               placeholder='Title'
@@ -59,71 +60,83 @@ export const FormModalEvent = ({
               }}
             />
           </FormControl>
+        </FormControl>
 
-          <FormControl>
-            <StyledInputModalEvent
-              disableUnderline
-              type='text'
-              placeholder='Description'
-              value={value?.description || ''}
-              onChange={(e) => {
-                changeEventHandler(e.target.value, 'description');
-                setValue({ ...value, description: e.target.value });
-              }}
-              sx={{
-                color: 'rgba(68, 70, 70, 0.885)',
-                fontFamily: 'Cormorant',
-                fontSize: '20px',
-              }}
-            />
-          </FormControl>
-          <Box
+        <FormControl
+          sx={{
+            backgroundColor: 'rgba(251, 251, 251, 0.707)',
+            borderRadius: '8px',
+            boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
+            height: '180px',
+            padding: '8px',
+            width: '300px',
+          }}
+        >
+          <Input
+            className={styles['modal-event-input']}
+            disableUnderline
+            type='text'
+            placeholder='Description'
+            value={value?.description || ''}
+            onChange={(e) => {
+              changeEventHandler(e.target.value, 'description');
+              setValue({ ...value, description: e.target.value });
+            }}
             sx={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              position: 'relative',
-              paddingBottom: '0px',
+              color: 'rgba(68, 70, 70, 0.885)',
+              fontFamily: 'Cormorant',
+              fontSize: '20px',
+            }}
+          />
+        </FormControl>
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            position: 'relative',
+            paddingBottom: '0px',
+          }}
+        >
+          <Button
+            onClick={() => cancelFormHandler()}
+            sx={{
+              fontFamily: 'serif',
+              fontSize: '15px',
+              fontWeight: 'bolder',
+              color: 'rgb(73, 79, 79)',
             }}
           >
+            CANCEL
+          </Button>
+          <Button
+            onClick={() => eventFetchHandler()}
+            sx={{
+              fontFamily: 'serif',
+              fontSize: '15px',
+              fontWeight: 'bolder',
+              color: 'rgb(73, 79, 79)',
+            }}
+          >
+            {method}
+          </Button>
+          {method === 'Update' && (
             <Button
-              onClick={() => cancelFormHandler()}
+              onClick={() => deleteEventHandler()}
               sx={{
-                fontFamily: 'serif',
+                fontFamily: 'Cormorant',
                 fontSize: '15px',
                 fontWeight: 'bolder',
                 color: 'rgb(73, 79, 79)',
               }}
             >
-              CANCEL
+              DELETE
             </Button>
-            <Button
-              onClick={() => eventFetchHandler()}
-              sx={{
-                fontFamily: 'serif',
-                fontSize: '15px',
-                fontWeight: 'bolder',
-                color: 'rgb(73, 79, 79)',
-              }}
-            >
-              {method}
-            </Button>
-            {method === 'Update' && (
-              <Button
-                onClick={() => deleteEventHandler()}
-                sx={{
-                  fontFamily: 'Cormorant',
-                  fontSize: '15px',
-                  fontWeight: 'bolder',
-                  color: 'rgb(73, 79, 79)',
-                }}
-              >
-                DELETE
-              </Button>
-            )}
-          </Box>
-        </FormControl>
+          )}
+        </Box>
       </Box>
     )
   );
 };
+
 export default FormModalEvent;

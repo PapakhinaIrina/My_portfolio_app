@@ -1,26 +1,23 @@
 import React from 'react';
-import { PhotogalleryContainer, PhotogalleryWrapper } from './styled';
+import { Box, Container } from '@mui/material';
 import { UploadPhotoInput } from '../../features/UploadPhotoInput';
 import { PhotoGalleryHeader } from '../../entities/PhotoGalleryHeader';
 import { PhotoGalleryGrid } from '../../entities/PhotoGalleryGrid';
+import styles from './photoGallery.module.scss';
 
 const PhotoGallery = () => {
   return (
-    <PhotogalleryContainer
+    <Container
       disableGutters
-      sx={{
-        display: 'grid',
-        justifyContent: 'center',
-        gridTemplateRows: '100px 60px 800px',
-      }}
+      className={styles['photo-gallery-container']}
     >
       <PhotoGalleryHeader />
       {/* <UploadPhotoInput />
-      <PhotogalleryWrapper>
+      <Box className={styles['photo-gallery-wrapper']}>
         <PhotoGalleryGrid>
 
         </PhotoGalleryGrid>
-      </PhotogalleryWrapper> */}
+      </Box> */}
       <div
         style={{
           fontSize: '20px',
@@ -30,7 +27,7 @@ const PhotoGallery = () => {
       >
         В разработке...
       </div>
-    </PhotogalleryContainer>
+    </Container>
   );
 };
 export default PhotoGallery;

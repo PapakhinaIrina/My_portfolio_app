@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { PhotoGalleryButtons, PhotoGalleryButtonsContainer, PhotoGalleryButtonsWrapper, UploadInput } from './styled';
-import { FormControl, InputLabel } from '@mui/material';
+import { Input, Box, Container, FormControl, InputLabel } from '@mui/material';
+import styles from './uploadPhotoInput.module.css'
 
 export const UploadPhotoInput = () => {
   const [files, setFiles] = useState(null);
@@ -35,7 +35,8 @@ export const UploadPhotoInput = () => {
   }, [files]);
 
   return (
-    <PhotoGalleryButtonsContainer
+    <Container
+      className={styles['photo-gallery-buttons-container']}
       disableGutters
       sx={{
         display: 'flex',
@@ -45,10 +46,10 @@ export const UploadPhotoInput = () => {
         marginBottom: '5px',
       }}
     >
-      <PhotoGalleryButtonsWrapper>
+      <Box className={styles['photo-gallery-buttons-wrapper']}>
         <FormControl hiddenLabel={true}>
-          <InputLabel htmlFor='file-input'></InputLabel>
-          <UploadInput
+          <InputLabel htmlFor='file-input' />
+          <Input
             id='file-input'
             type='file'
             multiple={true}
@@ -57,14 +58,15 @@ export const UploadPhotoInput = () => {
             aria-label=''
             accept='image/*, .png, .jpg, .gif, .web'
             inputRef={filePicker}
+            className={styles['upload-input']}
           />
         </FormControl>
-        <PhotoGalleryButtons onClick={handleClick}>choose a file</PhotoGalleryButtons>
+        <Box onClick={handleClick} className={styles['photo-gallery-buttons']}>choose a file</Box>
 
-        <PhotoGalleryButtons onClick={handleUpload}>upload photo</PhotoGalleryButtons>
+        <Box onClick={handleUpload} className={styles['photo-gallery-buttons']}>upload photo</Box>
         {files}
-      </PhotoGalleryButtonsWrapper>
-    </PhotoGalleryButtonsContainer>
+      </Box>
+    </Container>
   );
 };
 

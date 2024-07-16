@@ -19,6 +19,7 @@ const defaultEvent = {
 };
 
 const Planner = () => {
+  const { v4 } = uuidv4();
   const [today, setToday] = useState(moment());
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState(null);
@@ -119,10 +120,10 @@ const Planner = () => {
 
   return (
     <Container
-      disableGutters
       sx={{
         paddingTop: spacing[4],
         maxWidth: '1060px',
+        margin: '0 auto',
       }}
     >
       <Container
@@ -163,9 +164,8 @@ const Planner = () => {
               }}
             >
               <Button
-                key={uuidv4()}
+                key={v4}
                 onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}
-                isPressed={displayMode === DISPLAY_MODE_MONTH}
                 sx={{
                   boxShadow: displayMode === DISPLAY_MODE_MONTH ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
                   color: displayMode === DISPLAY_MODE_MONTH ? 'white' : 'rgb(73, 79, 79)',
@@ -176,9 +176,8 @@ const Planner = () => {
                 Month
               </Button>
               <Button
-                key={uuidv4()}
+                key={v4}
                 onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}
-                isPressed={displayMode === DISPLAY_MODE_DAY}
                 sx={{
                   boxShadow: displayMode === DISPLAY_MODE_DAY ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
                   color: displayMode === DISPLAY_MODE_DAY ? 'white' : 'rgb(73, 79, 79)',
@@ -198,17 +197,17 @@ const Planner = () => {
                 color: 'rgb(73, 79, 79)',
               }}
             >
-              <Button key={uuidv4()} onClick={() => prevHandler(today)}>
+              <Button key={v4} onClick={() => prevHandler(today)}>
                 <Icon icon='ooui:next-rtl' width={15} color='rgba(73, 79, 79, 0.473)' />
               </Button>
               <Box onClick={() => todayHandler(today)}>Today</Box>
-              <Button key={uuidv4()} onClick={() => nextHandler(today)}>
+              <Button key={v4} onClick={() => nextHandler(today)}>
                 <Icon icon='ooui:next-ltr' width={15} color='rgba(73, 79, 79, 0.473)' />
               </Button>
             </Box>
           </Box>
 
-          <Box>
+          <Box >
             {displayMode === DISPLAY_MODE_MONTH ? (
               <>
                 <Calendar

@@ -1,12 +1,13 @@
 import React from 'react';
-import { PhotoGalleryHeaderContainer, PhotoGalleryHeaderBox } from './styled';
+import { Box, Container, Typography } from '@mui/material';
 import Lottie from 'lottie-react';
 import AnimationLineTitle from '../../shared/ui/animation/animationLineTitle.json';
-import { Typography } from '@mui/material';
+import styles from './photoGalleryHeader.module.css';
 
 export const PhotoGalleryHeader = () => {
   return (
-    <PhotoGalleryHeaderContainer
+    <Container 
+    className={styles['photo-gallery-header-container']}
       disableGutters
       sx={{
         display: 'flex',
@@ -15,7 +16,7 @@ export const PhotoGalleryHeader = () => {
         alignItems: 'center',
       }}
     >
-      <PhotoGalleryHeaderBox>
+      <Box className={styles['photo-gallery-header-box']}>
         <Lottie
           animationData={AnimationLineTitle}
           loop={true}
@@ -37,7 +38,7 @@ export const PhotoGalleryHeader = () => {
           autoplay={true}
           style={{ height: '100px', width: '100px', transform: 'rotate(-90deg)' }}
         />
-      </PhotoGalleryHeaderBox>
-    </PhotoGalleryHeaderContainer>
+      </Box>
+    </Container>
   );
 };
