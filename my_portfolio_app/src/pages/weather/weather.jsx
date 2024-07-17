@@ -1,9 +1,9 @@
 /* eslint-disable unicorn/filename-case */
 import React, { useState, useCallback, useEffect } from 'react';
 import { Box, Button, Container } from '@mui/material';
-import { SearchLocation } from '../../shared/ui/SearchLocation';
-import Img from '/Applications/MAMP/htdocs/My_portfolio_app/my_portfolio_app/src/shared/ui/Image/Weather/sunset.png';
-import { getWeatherByCity } from '../../shared/api/Weather';
+import { SearchLocation } from '../../shared/ui/searchLocation';
+import Img from '../../shared/ui/image/weather/sunset.png';
+import { getWeatherByCity } from '../../shared/api/weather';
 import { urlWeather } from '../../shared/constants/url';
 
 const Weather = () => {

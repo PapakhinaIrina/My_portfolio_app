@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Calendar from './Calendar';
-import FormModalEvent from '../../widgets/ModalEvents/ModalEvents';
-import { CalendarFooter } from '../../entities/CalendarFooter/CalendarFooter';
-import { DayShowComponent } from '../../widgets/DayShowComponent/DayShowComponent';
+import  Calendar  from './calendar';
+import { FormModalEvent } from '../../widgets/modalEvents/modalEvents';
+import { CalendarFooter } from '../../entities/calendarFooter/calendarFooter';
+import { DayShowComponent } from '../../widgets/dayShowComponent/dayShowComponent';
 import { Container, Button, Box } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { spacing } from '../../shared/constants/spacing';

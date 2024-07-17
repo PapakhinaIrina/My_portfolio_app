@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import Contact from '../pages/Contact/Contact';
-import Landing from '../pages/Landing/Landing';
-import Portfolio from '../pages/Portfolio/Portfolio';
-import SignUp from './SignUp/SignUp';
-import Widget from '../pages/WidgetComponent/Widget';
-import Planner from '../pages/Planner/Planner';
-import PhotoGallery from '../pages/PhotoGallery/PhotoGallery';
-import Weather from '../pages/Weather/Weather';
+import Contact  from './contact/contact';
+import Landing from './landing/landing';
+import Portfolio from './portfolio/portfolio';
+import SignUp from './signUp/signUp';
+import Widget from './widgetComponent/widget';
+import Planner from './planner/planner';
+import PhotoGallery from './photoGallery/photoGallery';
+import Weather from './weather/weather';
 
 export const Router = () => {
   return (

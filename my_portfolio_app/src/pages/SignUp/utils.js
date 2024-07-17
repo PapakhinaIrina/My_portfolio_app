@@ -8,7 +8,6 @@ export const findInputError = (errors, name) => {
 };
 
 export const isFormInvalid = (err) => {
-  console.log('err', err);
   if (Object.keys(err).length > 0) {
     return true;
   }

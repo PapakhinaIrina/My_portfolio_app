@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Lottie from 'lottie-react';
 import Animation from '../../shared/ui/animation/animationEmptyList.json';
 import { v4 as uuidv4 } from 'uuid';
-import styles from './calendarFooter.module.css';
+import styles from './calendarFooter.module.scss';
 
 export const CalendarFooter = (props) => {
   const { currentDayEvents } = props;

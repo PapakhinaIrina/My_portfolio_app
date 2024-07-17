@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { Box, Container } from '@mui/material';
-import { FormModalEvent } from '../../widgets/ModalEvents/ModalEvents';
-import { CalendarGridHeader } from '../../entities/CalendarGridHeader/CalendarGridHeader';
-import { CalendarDayBox } from '../../shared/ui/CalendarDayBox/CalendarDayBox';
-import { CalendarListEvent } from '../../entities/CalendarListEvent/CalendarListEvent';
+import { FormModalEvent } from '../../widgets/modalEvents/modalEvents';
+import { CalendarGridHeader } from '../../entities/calendarGridHeader/calendarGridHeader';
+import { CalendarDayBox } from '../../shared/ui/calendarDayBox/calendarDayBox';
+import { CalendarListEvent } from '../../entities/calendarListEvent/calendarListEvent';
 import { isCurrentMonth, isCurrentDay } from '../../shared/utils/helpers/helpers';
 import { url } from '../../shared/constants/url';
 import { v4 as uuidv4 } from 'uuid';
