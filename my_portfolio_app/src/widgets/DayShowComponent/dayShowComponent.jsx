@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { Box, Container, Button, Tooltip } from '@mui/material';
-import FormModalEvent from '../../widgets/ModalEvents/ModalEvents';
+import FormModalEvent from '../modalEvents/modalEvents';
 import { ITEMS_PER_DAY } from '../../shared/constants/constants';
 import { Icon } from '@iconify/react';
 import Lottie from 'lottie-react';

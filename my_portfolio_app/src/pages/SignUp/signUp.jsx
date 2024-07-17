@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { SignUpContainer } from '../../widgets/SignUpContainer';
-import { SignUpButton } from '../../features/SignUpButton';
-import { PasswordInput } from './PasswordInput';
-import { Account } from './Account';
+import { SignUpContainer } from '../../widgets/signUpContainer';
+import { SignUpButton } from '../../features/signUpButton';
+import { PasswordInput } from './passwordInput';
+import { Account } from './account';
 import { FormInput } from './form/formInput';
 import { Checkbox, FormControlLabel, Box } from '@mui/material';
 import { registration } from '../../shared/server/actions/actionUser';

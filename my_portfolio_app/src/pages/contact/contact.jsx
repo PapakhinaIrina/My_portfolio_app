@@ -3,7 +3,7 @@ import { Container, Typography, Box } from '@mui/material';
 import { Icon } from '@iconify/react';
 // import { Animation } from '../../widgets/ui/animation/Animation';
 import { CONSTANTS } from '../../shared/constants/constants';
-import { ButtonHome } from '../../widgets/buttonHome/ButtonHome';
+import { ButtonHome } from '../../widgets/buttonHome/buttonHome';
 import { headerHeight } from '../../shared/constants/componentSize';
 import { spacing } from '../../shared/constants/spacing';
 import { useTranslation } from 'react-i18next';

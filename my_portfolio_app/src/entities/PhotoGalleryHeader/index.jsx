@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import Lottie from 'lottie-react';
 import AnimationLineTitle from '../../shared/ui/animation/animationLineTitle.json';
-import styles from './photoGalleryHeader.module.css';
+import styles from './photoGalleryHeader.module.scss';
 
 export const PhotoGalleryHeader = () => {
   return (

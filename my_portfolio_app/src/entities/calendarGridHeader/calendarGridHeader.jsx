@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import moment from 'moment';
-import styles from './calendarGridHeader.module.css';
+import styles from './calendarGridHeader.module.scss';
 
 export const CalendarGridHeader = () => {
   return (

@@ -3,7 +3,7 @@ import React from 'react';
 import { AppBar, Container, Box, Button, Toolbar, Typography } from '@mui/material';
 import { useMatchMedia } from '../../shared/utils/hooks/matchMediaHook';
 import { headerHeight } from '../../shared/constants/componentSize';
-import { LanguageButton } from '../LanguageButton/index';
+import { LanguageButton } from '../languageButton/index';
 import { useTranslation } from 'react-i18next';
 
 const textHeader = "Papakhina's Portfolio";

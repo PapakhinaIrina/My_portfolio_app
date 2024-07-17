@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { Input, Box, Container, FormControl, InputLabel } from '@mui/material';
-import styles from './uploadPhotoInput.module.css'
+import styles from './uploadPhotoInput.module.scss'
 
 export const UploadPhotoInput = () => {
   const [files, setFiles] = useState(null);

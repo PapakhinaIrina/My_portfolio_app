@@ -3,7 +3,7 @@ import React from 'react';
 import { isDayContainCurrentEvent } from '../../shared/utils/helpers/helpers';
 import { v4 as uuidv4 } from 'uuid';
 import { Button, List, ListItem } from '@mui/material';
-import styles from './calendarEventListEvent.module.css';
+import styles from './calendarEventListEvent.module.scss';
 
 export const CalendarListEvent = (props) => {
   const { events, dayItem, openModalFormHandler } = props;
