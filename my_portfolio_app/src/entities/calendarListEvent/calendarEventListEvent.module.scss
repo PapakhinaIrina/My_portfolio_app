@@ -3,8 +3,9 @@
   flex-direction: column;
   justify-content: flex-start;
   list-style-position: inside;
+  padding: 2px;
   margin: unset;
-  overflow: scroll;
+  overflow: hidden;
   max-height: calc(100px - 33px);
   width: 100%;
 }
@@ -24,9 +25,9 @@
   font-size: 8px;
   font-weight: bolder;
   font-family: Segoe UI;
-  color: 37474f;
+  color: 37474;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   text-transform: capitalize;
+  padding: 0px;
 }

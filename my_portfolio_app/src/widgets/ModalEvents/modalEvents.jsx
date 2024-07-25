@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Box, Button, FormControl, Input } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './modalEvents.module.scss';
 
 export const FormModalEvent = ({
@@ -13,35 +14,18 @@ export const FormModalEvent = ({
   setValue,
   value,
 }) => {
+  const v4 = uuidv4();
   return (
     isShowForm && (
-      <Box
+      <Box key={v4}
         onClick={() => cancelFormHandler()}
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute',
-          zIndex: '100',
-          top: '0',
-          right: '0',
-          bottom: '0',
-          left: '0',
-          backgroundColor: 'rgba(255, 255, 255, 0.499)',
-          boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px',
-        }}
+        className={styles['modal-event-box']}
       >
         <FormControl
+          key={`form-control-${v4}`}
           onClick={(e) => e.stopPropagation()}
-          sx={{
-            backgroundColor: 'rgba(251, 251, 251, 0.707)',
-            borderRadius: '8px',
-            boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
-            height: '180px',
-            padding: '8px',
-            width: '300px',
-          }}
-        >
+          className={styles['modal-event-control-box']}
+          >
           <FormControl>
             <Input
               className={styles['modal-event-input']}
@@ -63,14 +47,8 @@ export const FormModalEvent = ({
         </FormControl>
 
         <FormControl
-          sx={{
-            backgroundColor: 'rgba(251, 251, 251, 0.707)',
-            borderRadius: '8px',
-            boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
-            height: '180px',
-            padding: '8px',
-            width: '300px',
-          }}
+          key={v4}
+          className={styles['modal-event-control-box']}
         >
           <Input
             className={styles['modal-event-input']}
@@ -91,6 +69,7 @@ export const FormModalEvent = ({
         </FormControl>
 
         <Box
+          key={`form-box-buttons-${v4}`}
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
@@ -99,6 +78,7 @@ export const FormModalEvent = ({
           }}
         >
           <Button
+            key={`cancel-button-${v4}`}
             onClick={() => cancelFormHandler()}
             sx={{
               fontFamily: 'serif',
@@ -110,6 +90,7 @@ export const FormModalEvent = ({
             CANCEL
           </Button>
           <Button
+            key={`method-button-${v4}`}
             onClick={() => eventFetchHandler()}
             sx={{
               fontFamily: 'serif',
@@ -122,6 +103,7 @@ export const FormModalEvent = ({
           </Button>
           {method === 'Update' && (
             <Button
+              key={`delete-button-${v4}`}
               onClick={() => deleteEventHandler()}
               sx={{
                 fontFamily: 'Cormorant',

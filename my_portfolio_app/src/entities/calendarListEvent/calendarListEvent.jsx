@@ -7,40 +7,26 @@ import styles from './calendarEventListEvent.module.scss';
 
 export const CalendarListEvent = (props) => {
   const { events, dayItem, openModalFormHandler } = props;
-  const { v4 } = uuidv4();
+  const v4 = uuidv4();
 
   return (
     <>
       {events && events.length > 0 && (
-        <List
-          className={styles['list']}
-          disablePadding
-          component='nav'
-          key={v4}
-          sx={{
-            padding: '2px',
-          }}
-        >
+        <List className={styles['list']} disablePadding component='nav' key={`listEvents-${v4}`}>
           {events
             .filter((ev) => isDayContainCurrentEvent(ev, dayItem))
-            .map((ev) => (
+            .map((ev, index) => (
               <Button
                 className={styles['double-clicked-button']}
                 fullWidth
-                key={v4}
+                key={index}
                 onDoubleClick={() => openModalFormHandler('Update', ev, dayItem)}
                 sx={{
                   paddingTop: '0px',
                   paddingBottom: '0px',
                 }}
               >
-                <ListItem
-                  className={styles['list-item-title']}
-                  key={v4}
-                  sx={{
-                    padding: '0px',
-                  }}
-                >
+                <ListItem className={styles['list-item-title']} key={`listItem-${index}`}>
                   {ev.title}
                 </ListItem>
               </Button>

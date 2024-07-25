@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import  Calendar  from './calendar';
+import { Container, Button, Box } from '@mui/material';
+import Calendar from './calendar';
+import { CalendarButton } from '../../features/calendarButton/calendarButton';
 import { FormModalEvent } from '../../widgets/modalEvents/modalEvents';
 import { CalendarFooter } from '../../entities/calendarFooter/calendarFooter';
 import { DayShowComponent } from '../../widgets/dayShowComponent/dayShowComponent';
-import { Container, Button, Box } from '@mui/material';
 import { Icon } from '@iconify/react';
-import { spacing } from '../../shared/constants/spacing';
 import { DISPLAY_MODE_MONTH, DISPLAY_MODE_DAY } from '../../shared/constants/constants';
 import { url } from '../../shared/constants/url';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
+import style from './calendar.module.scss';
 
 const defaultEvent = {
   title: '',
@@ -19,7 +20,6 @@ const defaultEvent = {
 };
 
 const Planner = () => {
-  const { v4 } = uuidv4();
   const [today, setToday] = useState(moment());
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState(null);
@@ -28,6 +28,8 @@ const Planner = () => {
   const [method, setMethod] = useState(null);
   const [value, setValue] = useState(defaultEvent);
   const [displayMode, setDisplayMode] = useState('month');
+
+  const v4 = uuidv4();
 
   const isStartCurrentDay = moment().startOf('day');
   const isEndCurrentDay = moment().endOf('day');
@@ -40,9 +42,9 @@ const Planner = () => {
       .then((res) => res.json())
       .then((res) => {
         setCurrentDayEvents(res);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(events)]);
+      })
+      .catch((error) => console.error('Planner list page:', error));
+  }, [events]);
 
   const prevHandler = () => setToday((prev) => prev.clone().subtract(1, displayMode));
   const todayHandler = () => setToday(moment());
@@ -53,7 +55,12 @@ const Planner = () => {
   const selectedYearYear = moment().startOf('year').format('YYYY');
 
   const openFormHandler = (methodName, eventForUpdate, dayItem) => {
-    setEvent(eventForUpdate || { ...defaultEvent, date: dayItem.format('X') });
+    const dateString = dayItem["_d"];
+    const momentInstance = moment(dateString);
+    const unixTimestamp = momentInstance.unix();
+
+    console.log(dayItem);
+    setEvent(eventForUpdate || { ...defaultEvent, date: unixTimestamp });
     setMethod(methodName);
     setValue({ ...value, title: eventForUpdate?.title, description: eventForUpdate?.description });
   };
@@ -112,157 +119,112 @@ const Planner = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setEvents((prev) => prev.filter((eventEl) => eventEl.id !== event.id));
         cancelFormHandler();
       });
   };
 
   return (
-    <Container
-      sx={{
-        paddingTop: spacing[4],
-        maxWidth: '1060px',
-        margin: '0 auto',
-      }}
-    >
-      <Container
-        sx={{
-          display: 'flex',
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#F5F5F5',
-          borderRadius: '8px',
-          border: '1px solid rgba(105, 112, 112, 0.409)',
-          boxShadow: 'rgba(133, 134, 167, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
-          paddingBottom: spacing[3],
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
+    <Container className={style['planner-wrapper']}>
+      <Container className={style['planner-container']}>
+        <Box className={style['planner-header']}>
+          {[selectedMonthMonth, ' ', selectedDay, ' ', selectedYearYear]}
+
+          <Box className={style['planner-header-buttons-wrapper']}>
+            <CalendarButton
+              title='Month'
+              onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}
+              sx={{
+                boxShadow: displayMode === DISPLAY_MODE_MONTH ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
+                color: displayMode === DISPLAY_MODE_MONTH ? 'white' : 'rgba(73, 79, 79)',
+                backgroundColor: displayMode === DISPLAY_MODE_MONTH ? 'bdbdbd' : 'none',
+              }}
+            />
+            <CalendarButton
+              title='Day'
+              onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}
+              sx={{
+                boxShadow: displayMode === DISPLAY_MODE_DAY ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
+                color: displayMode === DISPLAY_MODE_DAY ? 'white' : 'rgba(73, 79, 79)',
+                backgroundColor: displayMode === DISPLAY_MODE_DAY ? 'bdbdbd' : 'none',
+              }}
+            />
+          </Box>
+
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              fontSize: '30px',
-              fontFamily: 'cursive',
+              flexDirection: 'row',
+              fontSize: '20px',
+              color: 'rgb(73, 79, 79)',
+              cursor: 'pointer',
             }}
           >
-            {[selectedMonthMonth, ' ', selectedDay, ' ', selectedYearYear]}
-
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                fontSize: '20px',
-              }}
-            >
-              <Button
-                key={v4}
-                onClick={() => setDisplayMode(DISPLAY_MODE_MONTH)}
-                sx={{
-                  boxShadow: displayMode === DISPLAY_MODE_MONTH ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
-                  color: displayMode === DISPLAY_MODE_MONTH ? 'white' : 'rgb(73, 79, 79)',
-                  cursor: 'pointer',
-                  backgroundColor: displayMode === DISPLAY_MODE_MONTH ? '#bdbdbd' : 'none',
-                }}
-              >
-                Month
-              </Button>
-              <Button
-                key={v4}
-                onClick={() => setDisplayMode(DISPLAY_MODE_DAY)}
-                sx={{
-                  boxShadow: displayMode === DISPLAY_MODE_DAY ? 'rgba(0, 0, 0, 0.24) 0px 3px 8px' : 'none',
-                  color: displayMode === DISPLAY_MODE_DAY ? 'white' : 'rgb(73, 79, 79)',
-                  cursor: 'pointer',
-                  backgroundColor: displayMode === DISPLAY_MODE_DAY ? '#bdbdbd' : 'none',
-                }}
-              >
-                Day
-              </Button>
-            </Box>
-
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                fontSize: '20px',
-                color: 'rgb(73, 79, 79)',
-              }}
-            >
-              <Button key={v4} onClick={() => prevHandler(today)}>
-                <Icon icon='ooui:next-rtl' width={15} color='rgba(73, 79, 79, 0.473)' />
-              </Button>
-              <Box onClick={() => todayHandler(today)}>Today</Box>
-              <Button key={v4} onClick={() => nextHandler(today)}>
-                <Icon icon='ooui:next-ltr' width={15} color='rgba(73, 79, 79, 0.473)' />
-              </Button>
-            </Box>
+            <Button id={v4} onClick={() => prevHandler(today)}>
+              <Icon icon='ooui:next-rtl' width={15} color='rgba(73, 79, 79, 0.473)' />
+            </Button>
+            <Box onClick={() => todayHandler(today)}>Today</Box>
+            <Button id={v4} onClick={() => nextHandler(today)}>
+              <Icon icon='ooui:next-ltr' width={15} color='rgba(73, 79, 79, 0.473)' />
+            </Button>
           </Box>
+        </Box>
 
-          <Box >
-            {displayMode === DISPLAY_MODE_MONTH ? (
-              <>
-                <Calendar
-                  today={today}
-                  method={method}
-                  events={events}
-                  setEvents={setEvents}
-                  setIsShowForm={setIsShowForm}
-                  openModalFormHandler={openModalFormHandler}
-                  isShowForm={isShowForm}
-                  cancelFormHandler={cancelFormHandler}
-                  changeEventHandler={changeEventHandler}
-                  eventFetchHandler={eventFetchHandler}
-                  deleteEventHandler={deleteEventHandler}
-                  openFormHandler={openFormHandler}
-                />
-                <CalendarFooter currentDayEvents={currentDayEvents} />
-              </>
-            ) : null}
-
-            {displayMode === DISPLAY_MODE_DAY ? (
-              <DayShowComponent
-                currentDayEvents={currentDayEvents}
-                setCurrentDayEvents={setCurrentDayEvents}
-                openFormHandler={openFormHandler}
+        <Box>
+          {displayMode === DISPLAY_MODE_MONTH ? (
+            <>
+              <Calendar
+                today={today}
+                method={method}
+                events={events}
+                setEvents={setEvents}
+                setIsShowForm={setIsShowForm}
                 openModalFormHandler={openModalFormHandler}
                 isShowForm={isShowForm}
-                setIsShowForm={setIsShowForm}
                 cancelFormHandler={cancelFormHandler}
+                changeEventHandler={changeEventHandler}
                 eventFetchHandler={eventFetchHandler}
                 deleteEventHandler={deleteEventHandler}
-                changeEventHandler={changeEventHandler}
-                event={event}
-                method={method}
-                setValue={setValue}
-                value={value}
-                setEvent={setEvent}
-                today={today}
+                openFormHandler={openFormHandler}
               />
-            ) : null}
-          </Box>
+              <CalendarFooter currentDayEvents={currentDayEvents} />
+            </>
+          ) : null}
 
-          <FormModalEvent
-            isShowForm={isShowForm}
-            cancelFormHandler={cancelFormHandler}
-            eventFetchHandler={eventFetchHandler}
-            deleteEventHandler={deleteEventHandler}
-            changeEventHandler={changeEventHandler}
-            event={event}
-            method={method}
-            setValue={setValue}
-            value={value}
-            setEvent={setEvent}
-          />
+          {displayMode === DISPLAY_MODE_DAY ? (
+            <DayShowComponent
+              currentDayEvents={currentDayEvents}
+              setCurrentDayEvents={setCurrentDayEvents}
+              openFormHandler={openFormHandler}
+              openModalFormHandler={openModalFormHandler}
+              isShowForm={isShowForm}
+              setIsShowForm={setIsShowForm}
+              cancelFormHandler={cancelFormHandler}
+              eventFetchHandler={eventFetchHandler}
+              deleteEventHandler={deleteEventHandler}
+              changeEventHandler={changeEventHandler}
+              event={event}
+              method={method}
+              setValue={setValue}
+              value={value}
+              setEvent={setEvent}
+              today={today}
+            />
+          ) : null}
         </Box>
+
+        <FormModalEvent
+          isShowForm={isShowForm}
+          cancelFormHandler={cancelFormHandler}
+          eventFetchHandler={eventFetchHandler}
+          deleteEventHandler={deleteEventHandler}
+          changeEventHandler={changeEventHandler}
+          event={event}
+          method={method}
+          setValue={setValue}
+          value={value}
+          setEvent={setEvent}
+        />
       </Container>
     </Container>
   );
