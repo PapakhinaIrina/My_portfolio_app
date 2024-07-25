@@ -41,33 +41,29 @@ export default function Calendar(props) {
   }, [startDateQuery, endDateQuery]);
 
   const day = today.clone().startOf('week');
-  const arrDays = [...new Array(totalDays)].map(() =>{
-    const newDay = day.add(1, 'day').clone();
-    const id = uuidv4();
-    return { ...newDay.toObject(), id };
-  });
+  const arrDays = [...new Array(totalDays)].map(() => {
+      const newDay = day.add(1, 'day').clone();
+      const dayObj = newDay.toObject();
+      return { ...newDay, id: v4 };
+    });
 
   return (
     <Container className={[styles['calendar-wrapper']]} key={v4}>
-      <Container  className={styles['calendar-container']} key={v4}>
-        <Box className={styles['calendar-box']} key={v4}>
+      <Container disableGutters className={styles['calendar-container']} key={v4}>
+        <Box className={styles['calendar-box']} key={'calendar-container'}>
           <CalendarGridHeader />
-          {arrDays.map((dayItem, today) => (
+          {arrDays.map((dayItem, index) => (
             <Box
-              key={dayItem.id}
-              isWeekend={dayItem.day === 6 || dayItem.day === 0}
-              isCurrentMonth={isCurrentMonth(dayItem, today)}
+              key={`calendar-box-${dayItem?.id}-${index}`}
               today={today}
               className={styles['calendar-month']}
               sx={{
-                margin: 0,
-                padding: 0,
-                backgroundColor: isCurrentMonth(dayItem, today) ? 'hwb(0 100% 0%)': 'hwb(0 82% 16% / 0.231)',
-              }}
-            >
-              <Box key={dayItem.id + 1} className={styles['calendar-day-header']}>
+                backgroundColor: isCurrentMonth(dayItem) ? 
+                'hwb(0 100% 0%)': 'hwb(0 82% 16% / 0.231)'
+                }}
+                >
+              <Box key={`calendar-day-${dayItem?.id}`} className={styles['calendar-day-header']}>
                 <CalendarDayBox
-                  key={v4}
                   openModalFormHandler={openModalFormHandler}
                   setIsShowForm={setIsShowForm}
                   isCurrentMonth={isCurrentMonth}
@@ -76,18 +72,16 @@ export default function Calendar(props) {
                 />
               </Box>
               <CalendarListEvent
-                key={v4}
                 events={events}
                 dayItem={dayItem}
                 openModalFormHandler={openModalFormHandler}
                 setIsShowForm={setIsShowForm}
                 isCurrentMonth={isCurrentMonth}
-                isCurrentDay={isCurrentDay(dayItem, today)}
+                isCurrentDay={isCurrentDay(dayItem)}
               />
             </Box>
           ))}
           <FormModalEvent
-            key={v4}
             isShowForm={isShowForm}
             cancelFormHandler={cancelFormHandler}
             eventFetchHandler={eventFetchHandler}
